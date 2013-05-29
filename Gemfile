@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'pg'
 gem 'jquery-rails'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -18,8 +19,4 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
