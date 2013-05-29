@@ -6,7 +6,7 @@ describe User do
              last_name: "Peters",
              email: "meghan.peters@gmail.com",
              password: "yes",
-             phone: 1112223333)
+             phone: "1112223333")
   end
 
   it "requires a first name" do
@@ -23,7 +23,12 @@ describe User do
 
   it "requires a unique email" do
     subject.save
-    expect(User.new(:email => "meghan.peters@gmail.com")).to have(1).error_on("password")
+    user = User.new(first_name: "Meghan",
+                    last_name: "Peters",
+                    email: "meghan.peters@gmail.com",
+                    password: "yes",
+                    phone: "1112223333")
+    expect(user).to have(1).error_on("email")
   end
 
   it "requires a password" do
@@ -32,5 +37,14 @@ describe User do
 
   it "requires a phone number" do
     expect{ subject.phone = "" }.to change { subject.valid? }.to be_false
+  end
+
+  it "rejects a phone number that is not valid" do
+    expect{ subject.phone = "1234" }.to change { subject.valid? }.to be_false
+  end
+
+  it "shorts an 11 digit number that starts with 1" do
+    subject.phone = "12345678912"
+    expect(subject.valid_phone_number).to eq("2345678912")
   end
 end

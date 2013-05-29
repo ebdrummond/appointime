@@ -7,7 +7,7 @@ describe "when a user logs into the site" do
                        last_name: "Peters",
                        email: "meghan.peters@gmail.com",
                        password: "yes",
-                       phone: 1112223333)
+                       phone: "1112223333")
     fill_in("Email", with: @user.email)
     fill_in("Password", with: @user.password)
   end

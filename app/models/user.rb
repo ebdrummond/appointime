@@ -16,6 +16,17 @@ class User < ActiveRecord::Base
                         :phone,
                         :password
 
-  validate :end_date_cannot_be_earlier_than_start_date
+  validate :valid_phone_number
 
+  def valid_phone_number
+    clean_number = self.phone.gsub(/\D/, "")
+
+    if clean_number.length == 10
+      self.phone = clean_number
+    elsif clean_number.length == 11 && clean_number[0] == "1"
+      self.phone = clean_number[1..10]
+    else
+      errors.add(:phone, "number is incorrect.  Please input phone in this format: (202) 222-2222")
+    end
+  end
 end
