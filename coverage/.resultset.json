@@ -187,12 +187,44 @@
         1,
         null
       ],
-      "/Users/erindrummond/projects/appointime/app/controllers/application_controller.rb": [
+      "/Users/erindrummond/projects/appointime/app/controllers/admin/appointments_controller.rb": [
         1,
         1,
         null,
         1,
         0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/erindrummond/projects/appointime/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        0,
+        2,
         null,
         null
       ],
@@ -202,6 +234,37 @@
       ],
       "/Users/erindrummond/projects/appointime/app/helpers/users_helper.rb": [
         1,
+        null
+      ],
+      "/Users/erindrummond/projects/appointime/app/models/appointment.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/erindrummond/projects/appointime/app/controllers/admin/dashboards_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/erindrummond/projects/appointime/app/controllers/sessions_controller.rb": [
@@ -247,6 +310,10 @@
         1,
         null,
         null,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/erindrummond/projects/appointime/app/models/user.rb": [
@@ -281,6 +348,18 @@
         4,
         null,
         null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/erindrummond/projects/appointime/app/controllers/welcome_controller.rb": [
@@ -305,10 +384,12 @@
         null,
         1,
         1,
+        1,
+        1,
         null,
         null
       ]
     },
-    "timestamp": 1369871278
+    "timestamp": 1369890073
   }
 }

@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
+//= require picker
+//= require picker.time
+//= require picker.date
+//= require legacy
 //= require_tree .

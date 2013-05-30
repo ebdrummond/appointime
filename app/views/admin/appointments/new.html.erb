@@ -1,0 +1,16 @@
+<%= "New appointment for #{@user.full_name}" %>
+
+<h2>Select date</h2>
+<%= form_for [:admin, @appointment] do |f| %>
+<p><%= f.label :date %><br>
+<%= f.text_field :date, id: "appt_date" %></p>
+<p><%= f.label :start, "Start Time" %><br>
+<%= f.text_field :start, id: "appt_start" %></p>
+Duration
+<p><%= radio_button_tag(:ending, "60 minutes") %>
+<%= label_tag(:end_60, "60 minutes") %></p>
+<p><%= radio_button_tag(:ending, "90 minutes") %>
+<%= label_tag(:end_90, "90 minutes") %></p>
+<%= hidden_field_tag(:user_id, @user.id) %>
+<p><%= f.submit "Book appointment!" %></p>
+<% end %>

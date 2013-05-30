@@ -1,0 +1,14 @@
+<h2>Select client</h2>
+
+<%= form_tag admin_clients_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %>
+
+<% @users.each do |user| %>
+  <p>
+    <%= link_to user.full_name, new_admin_appointment_path(:user_id => user.id) %><%= ", #{user.email}" %>
+  </p>
+<% end %>

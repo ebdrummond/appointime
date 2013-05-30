@@ -14,9 +14,11 @@ class User < ActiveRecord::Base
                         :last_name,
                         :email,
                         :phone,
-                        :password
+                        :password_digest
 
   validate :valid_phone_number
+
+  has_many :appointments
 
   def valid_phone_number
     clean_number = self.phone.gsub(/\D/, "")
@@ -27,6 +29,18 @@ class User < ActiveRecord::Base
       self.phone = clean_number[1..10]
     else
       errors.add(:phone, "number is incorrect.  Please input phone in this format: (202) 222-2222")
+    end
+  end
+
+  def full_name
+    [self.first_name, self.last_name].join(" ")
+  end
+
+  def self.search(query)
+    if query
+      where('name ILIKE ?', "%#{query}%")
+    else
+      all
     end
   end
 end

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:notice] = "Welcome back, Erin!"
+      flash[:notice] = "Welcome back, #{user.first_name}!"
       if user.admin
         redirect_to admin_dashboard_path
       else

@@ -6,6 +6,7 @@ describe User do
              last_name: "Peters",
              email: "meghan.peters@gmail.com",
              password: "yes",
+             password_confirmation: "yes",
              phone: "1112223333")
   end
 
