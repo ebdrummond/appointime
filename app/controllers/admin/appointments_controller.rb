@@ -1,7 +1,7 @@
 class Admin::AppointmentsController < ApplicationController
   before_filter :require_admin
 
-  def clients
+  def clients # = clients controller, index action
     @users = User.basic_search(params[:query])
   end
 

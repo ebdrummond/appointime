@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  #where('first_name || '' || last_name) - look up PG concat
+
   def full_name
     [self.first_name, self.last_name].join(" ")
   end
