@@ -4,10 +4,10 @@ describe DayPlanner do
   let(:appt){ stub(start_time: Time.new(2013, 1, 1, 15), duration: 90) }
 
   it "takes in appointments" do
-    expect(DayPlanner.new(appt).appointment).to eq(appt)
+    expect(DayPlanner.new(appt).appointments).to eq([appt])
   end
 
-  it "knows the start time and duration of the appointments" do
+  it "knows the start time and duration of the appointmentss" do
     expect(DayPlanner.new(appt).appointment.start_time).to eq(Time.new(2013, 1, 1, 15))
     expect(DayPlanner.new(appt).appointment.duration).to eq(90)
   end
