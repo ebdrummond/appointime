@@ -1,16 +1,12 @@
 require 'time'
 
 class DayPlanner
-  attr_reader :appointments, :day_start, :day_end
+  attr_reader :appointment, :day_start, :day_end
 
   def initialize(appointment)
-    @appointments = [appointment]
+    @appointment = appointment
     @day_start = Time.new(2013, 1, 1, 9)
     @day_end = Time.new(2013, 1, 1, 16)
-  end
-
-  def appointment
-    appointments.first
   end
 
   def time_slots
@@ -36,3 +32,4 @@ class DayPlanner
     time_slots.select{|ts| !appointment.start_time.to_s.include?(start_time(ts))  && duration(ts) >= 60}
   end
 end
+
