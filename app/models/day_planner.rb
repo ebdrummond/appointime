@@ -13,10 +13,12 @@ class DayPlanner
     appointments.each do |appt|
       slots << TimeSlot.new(starts: appt.start_time, duration: appt.duration)
     end
-    if !appointments.first.start_time.to_s.include?(Clock.new(8).to_s)
+    unless Clock.from(appointments.first.start_time) == Clock.new(8)
       slots << morning_slot
     end
-    slots << afternoon_slot
+    unless Clock.from(appointments.last.start_time + appointments.last.duration * 60).time >= Clock.new(17).time
+      slots << afternoon_slot
+    end
     slots.sort_by{|slot| slot.starts.time}
   end
 

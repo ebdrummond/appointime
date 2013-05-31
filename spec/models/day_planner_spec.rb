@@ -64,7 +64,7 @@ describe DayPlanner do
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
-    it "has three time slots" do
+    it "has two time slots" do
       expect(day_planner.time_slots.count).to eq(2)
     end
 
@@ -89,44 +89,44 @@ describe DayPlanner do
     end
   end
 
-  # context "with a single appointment at the beginning of the day" do
-  #   let(:appt1){ stub(start_time: Time.new(2013, 1, 1, 8), duration: 90) }
-  #   let(:appts){ [appt1] }
-  #   let(:day_planner){ DayPlanner.new(appts) }
+  context "with a single appointment at the end of the day" do
+    let(:appt1){ stub(start_time: Time.new(2013, 1, 1, 16, 30), duration: 90) }
+    let(:appts){ [appt1] }
+    let(:day_planner){ DayPlanner.new(appts) }
 
-  #   it "takes in appointments" do
-  #     expect(day_planner.appointments).to eq(appts)
-  #   end
+    it "takes in appointments" do
+      expect(day_planner.appointments).to eq(appts)
+    end
 
-  #   it "knows the start time and duration of the appointments" do
-  #     expect(day_planner.appointments.first.start_time).to eq(Time.new(2013, 1, 1, 8))
-  #     expect(day_planner.appointments.first.duration).to eq(90)
-  #   end
+    it "knows the start time and duration of the appointments" do
+      expect(day_planner.appointments.first.start_time).to eq(Time.new(2013, 1, 1, 16, 30))
+      expect(day_planner.appointments.first.duration).to eq(90)
+    end
 
-  #   it "has three time slots" do
-  #     expect(day_planner.time_slots.count).to eq(2)
-  #   end
+    it "has two time slots" do
+      expect(day_planner.time_slots.count).to eq(2)
+    end
 
-  #   it "sorts the time slots by start time" do
-  #     expect(day_planner.time_slots.first.starts).to eq(Clock.new(8))
-  #   end
+    it "sorts the time slots by start time" do
+      expect(day_planner.time_slots.first.starts).to eq(Clock.new(8))
+    end
 
-  #   it "has start times for the time slots" do
-  #     expect(day_planner.time_slots[1].starts).to eq(Clock.new(9, 30))
-  #   end
+    it "has start times for the time slots" do
+      expect(day_planner.time_slots[1].starts).to eq(Clock.new(16, 30))
+    end
 
-  #   it "has end times for the time slots" do
-  #     expect(day_planner.time_slots[1].ends).to eq(Clock.new(18))
-  #   end
+    it "has end times for the time slots" do
+      expect(day_planner.time_slots[1].ends).to eq(Clock.new(18))
+    end
 
-  #   it "has durations for the time slots" do
-  #     expect(day_planner.time_slots[1].duration).to eq(510)
-  #   end
+    it "has durations for the time slots" do
+      expect(day_planner.time_slots[1].duration).to eq(90)
+    end
 
-  #   it "identifies open time slots" do
-  #     expect(day_planner.open_slots.count).to eq(1)
-  #   end
-  # end
+    it "identifies open time slots" do
+      expect(day_planner.open_slots.count).to eq(1)
+    end
+  end
 
 
 
@@ -155,8 +155,8 @@ describe DayPlanner do
 end
 
 
-# context - beginning of day 1 appt
-# context - middle of day 1 appt
+#DONE context - beginning of day 1 appt
+#DONE context - middle of day 1 appt
 # context - end of day 1 appt
 # context - 3 appts with gaps
 # context - 2 with no gap
