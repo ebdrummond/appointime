@@ -14,27 +14,27 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2013-05-30T18:49:47-06:00">2013-05-30T18:49:47-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2013-05-30T22:12:53-06:00">2013-05-30T22:12:53-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">83.42%</span></span>
+    (<span class="covered_percent"><span class="yellow">86.8%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.41
+         3.57
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>24</b> files in total.
-    <b>187</b> relevant lines. 
-    <span class="green"><b>156</b> lines covered</span> and
-    <span class="red"><b>31</b> lines missed </span>
+    <b>197</b> relevant lines. 
+    <span class="green"><b>171</b> lines covered</span> and
+    <span class="red"><b>26</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -147,17 +147,17 @@
         <td>20</td>
         <td>20</td>
         <td>0</td>
-        <td>8.2</td>
+        <td>34.0</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#7f1e76d8df924333e008e0665f6cae07e1c2ba0a" class="src_link" title="app/models/day_planner.rb">app/models/day_planner.rb</a></td>
-        <td class="red strong">64.29 %</td>
-        <td>55</td>
-        <td>14</td>
-        <td>9</td>
-        <td>5</td>
-        <td>0.8</td>
+        <td class="green strong">100.0 %</td>
+        <td>96</td>
+        <td>24</td>
+        <td>24</td>
+        <td>0</td>
+        <td>10.9</td>
       </tr>
       
       <tr>
@@ -167,7 +167,7 @@
         <td>15</td>
         <td>15</td>
         <td>0</td>
-        <td>3.9</td>
+        <td>19.9</td>
       </tr>
       
       <tr>
@@ -1352,8 +1352,8 @@
           <code class="ruby">  def self.from(time)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="3">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="53" data-linenumber="3">
+          <span class="hits">53</span>
           
           <code class="ruby">    Clock.new(time.hour, time.min)</code>
         </li>
@@ -1388,20 +1388,20 @@
           <code class="ruby">  def initialize(hour, minutes = 0)</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="9">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="149" data-linenumber="9">
+          <span class="hits">149</span>
           
           <code class="ruby">    @time = Time.new(1970, 1, 1, hour, minutes)</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="10">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="149" data-linenumber="10">
+          <span class="hits">149</span>
           
           <code class="ruby">    @hour = hour</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="11">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="149" data-linenumber="11">
+          <span class="hits">149</span>
           
           <code class="ruby">    @minutes = minutes</code>
         </li>
@@ -1424,8 +1424,8 @@
           <code class="ruby">  def to_s</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="15">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="44" data-linenumber="15">
+          <span class="hits">44</span>
           
           <code class="ruby">    time.strftime(&quot;%H:%M&quot;)</code>
         </li>
@@ -1448,14 +1448,14 @@
           <code class="ruby">  def +(minutes)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="19">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="19" data-linenumber="19">
+          <span class="hits">19</span>
           
           <code class="ruby">    new_time = time + (minutes * 60)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="20">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="19" data-linenumber="20">
+          <span class="hits">19</span>
           
           <code class="ruby">    Clock.new(new_time.hour, new_time.min)</code>
         </li>
@@ -1478,8 +1478,8 @@
           <code class="ruby">  def -(diff)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="24">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="37" data-linenumber="24">
+          <span class="hits">37</span>
           
           <code class="ruby">    if diff.is_a?(Fixnum)</code>
         </li>
@@ -1502,8 +1502,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="28">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="36" data-linenumber="28">
+          <span class="hits">36</span>
           
           <code class="ruby">      (time - diff.time)/60</code>
         </li>
@@ -1532,8 +1532,8 @@
           <code class="ruby">  def ==(other)</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="33">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="15" data-linenumber="33">
+          <span class="hits">15</span>
           
           <code class="ruby">    self.hour == other.hour &amp;&amp; self.minutes == other.minutes</code>
         </li>
@@ -1563,11 +1563,11 @@
         <div class="source_table" id="7f1e76d8df924333e008e0665f6cae07e1c2ba0a">
   <div class="header">
     <h3>app/models/day_planner.rb</h3>
-    <h4><span class="red">64.29 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>14</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <b>24</b> relevant lines. 
+      <span class="green"><b>24</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -1616,10 +1616,10 @@
           <code class="ruby">  def initialize(appointments)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="8">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="35" data-linenumber="8">
+          <span class="hits">35</span>
           
-          <code class="ruby">    @appointments = appointments#.sort_by{|appt| appt.start_time}</code>
+          <code class="ruby">    @appointments = appointments.sort_by{|appt| appt.start_time}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
@@ -1640,20 +1640,20 @@
           <code class="ruby">  def time_slots</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="17" data-linenumber="12">
+          <span class="hits">17</span>
           
           <code class="ruby">    slots = []</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="17" data-linenumber="13">
+          <span class="hits">17</span>
           
           <code class="ruby">    appointments.each do |appt|</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="14">
-          
+        <li class="covered" data-hits="17" data-linenumber="14">
+          <span class="hits">17</span>
           
           <code class="ruby">      slots &lt;&lt; TimeSlot.new(starts: appt.start_time, duration: appt.duration)</code>
         </li>
@@ -1664,40 +1664,40 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="16">
+        <li class="covered" data-hits="17" data-linenumber="16">
+          <span class="hits">17</span>
           
-          
-          <code class="ruby">    slots &lt;&lt; morning_slot</code>
+          <code class="ruby">    if !appointments.first.start_time.to_s.include?(Clock.new(8).to_s)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="17">
+        <li class="covered" data-hits="9" data-linenumber="17">
+          <span class="hits">9</span>
           
-          
-          <code class="ruby">    slots.concat(in_between_slots)</code>
+          <code class="ruby">      slots &lt;&lt; morning_slot</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="18">
           
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="17" data-linenumber="19">
+          <span class="hits">17</span>
           
           <code class="ruby">    slots &lt;&lt; afternoon_slot</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="19">
+        <li class="covered" data-hits="60" data-linenumber="20">
+          <span class="hits">60</span>
           
-          
-          <code class="ruby">    slots</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    slots.sort_by{|slot| slot.starts.time}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
@@ -1706,94 +1706,94 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  def morning_slot</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="covered" data-hits="9" data-linenumber="24">
+          <span class="hits">9</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">    TimeSlot.new(ends: appointments.first.start_time)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="25">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="26">
           
           
-          <code class="ruby">  # def initialize(appointment)</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="covered" data-hits="1" data-linenumber="27">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #   @appointment = appointment</code>
+          <code class="ruby">  def afternoon_slot</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="covered" data-hits="17" data-linenumber="28">
+          <span class="hits">17</span>
           
-          
-          <code class="ruby">  #   @day_start = Time.new(2013, 1, 1, 9)</code>
+          <code class="ruby">    TimeSlot.new(starts: appointments.last.start_time + appointments.last.duration * 60)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
           
           
-          <code class="ruby">  #   @day_end = Time.new(2013, 1, 1, 16)</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">  # end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="31">
+          <span class="hits">1</span>
           
+          <code class="ruby">  def appointment_start_times</code>
+        </li>
+      
+        <li class="covered" data-hits="10" data-linenumber="32">
+          <span class="hits">10</span>
           
-          <code class="ruby">  # def time_slots</code>
+          <code class="ruby">    appointments.collect{|appt| Clock.new(appt.start_time.hour, appt.start_time.min).to_s}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">  #   slots = []</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
-          <code class="ruby">  #   slots &lt;&lt; &quot;#{day_start.strftime(&quot;%H:%M&quot;)} to #{appointment.start_time.strftime(&quot;%H:%M&quot;)}&quot;</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="35">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  #   slots &lt;&lt; &quot;#{appointment.start_time.strftime(&quot;%H:%M&quot;)} to #{(appointment.start_time + (appointment.duration * 60)).strftime(&quot;%H:%M&quot;)}&quot;</code>
+          <code class="ruby">  def time_slot_start_times</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="covered" data-hits="18" data-linenumber="36">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">  #   slots &lt;&lt; &quot;#{(appointment.start_time + (appointment.duration * 60)).strftime(&quot;%H:%M&quot;)} to #{day_end.strftime(&quot;%H:%M&quot;)}&quot;</code>
+          <code class="ruby">    time_slots.collect{|ts| ts.starts.to_s}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="37">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
@@ -1802,22 +1802,22 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # def start_time(time_slot)</code>
+          <code class="ruby">  def open_slots</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="covered" data-hits="7" data-linenumber="40">
+          <span class="hits">7</span>
           
-          
-          <code class="ruby">  #   time_slot.split(&quot; to &quot;).first</code>
+          <code class="ruby">    time_slots.select{|ts| (time_slot_start_times - appointment_start_times).include?(ts.starts.to_s)}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -1829,76 +1829,322 @@
         <li class="never" data-hits="" data-linenumber="43">
           
           
-          <code class="ruby">  # def end_time(time_slot)</code>
+          <code class="ruby">    # unless appointments.first.start_time.to_s.include?(Clock.new(8).to_s)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">  #   time_slot.split(&quot; to &quot;).last</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    # slots = []</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
           
           
-          <code class="ruby">  # def duration(time_slot)</code>
+          <code class="ruby">    # appointments.each do |appt|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby">  #   (Time.parse(end_time(time_slot)) - Time.parse(start_time(time_slot)))/60</code>
+          <code class="ruby">    #   slots &lt;&lt; TimeSlot.new(starts: appt.start_time, duration: appt.duration)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">    # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    # slots &lt;&lt; morning_slot</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">  # def open_slots</code>
+          <code class="ruby">    # slots.concat(in_between_slots)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
           
           
-          <code class="ruby">  #   time_slots.select{|ts| !appointment.start_time.to_s.include?(start_time(ts))  &amp;&amp; duration(ts) &gt;= 60}</code>
+          <code class="ruby">    # slots &lt;&lt; afternoon_slot</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">    # slots</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">  # def in_between_slots</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  #   slots = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">  #   appointments.each_with_index do |appt, index|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby">  #     break if index == appointments.size - 1</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">  #     next_appt = appointments[index+1]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">  #     slots &lt;&lt; TimeSlot.new(starts: appt.start_time + appt.duration * 60, ends: next_appt.start_time)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">  #   end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  #   slots</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby">  # def initialize(appointment)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="68">
+          
+          
+          <code class="ruby">  #   @appointment = appointment</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">  #   @day_start = Time.new(2013, 1, 1, 9)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">  #   @day_end = Time.new(2013, 1, 1, 16)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">  # def time_slots</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby">  #   slots = []</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
+          
+          
+          <code class="ruby">  #   slots &lt;&lt; &quot;#{day_start.strftime(&quot;%H:%M&quot;)} to #{appointment.start_time.strftime(&quot;%H:%M&quot;)}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">  #   slots &lt;&lt; &quot;#{appointment.start_time.strftime(&quot;%H:%M&quot;)} to #{(appointment.start_time + (appointment.duration * 60)).strftime(&quot;%H:%M&quot;)}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">  #   slots &lt;&lt; &quot;#{(appointment.start_time + (appointment.duration * 60)).strftime(&quot;%H:%M&quot;)} to #{day_end.strftime(&quot;%H:%M&quot;)}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="79">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="80">
+          
+          
+          <code class="ruby">  # def start_time(time_slot)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  #   time_slot.split(&quot; to &quot;).first</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="82">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="83">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="84">
+          
+          
+          <code class="ruby">  # def end_time(time_slot)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">  #   time_slot.split(&quot; to &quot;).last</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="86">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">  # def duration(time_slot)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="89">
+          
+          
+          <code class="ruby">  #   (Time.parse(end_time(time_slot)) - Time.parse(start_time(time_slot)))/60</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="90">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">  # def open_slots</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby">  #   time_slots.select{|ts| !appointment.start_time.to_s.include?(start_time(ts))  &amp;&amp; duration(ts) &gt;= 60}</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="94">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby"></code>
@@ -1946,14 +2192,14 @@
           <code class="ruby">  def initialize(params)</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="5">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="52" data-linenumber="5">
+          <span class="hits">52</span>
           
           <code class="ruby">    if params[:starts]</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="6">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="40" data-linenumber="6">
+          <span class="hits">40</span>
           
           <code class="ruby">      @starts = Clock.from(params[:starts])</code>
         </li>
@@ -1964,8 +2210,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="8">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="12" data-linenumber="8">
+          <span class="hits">12</span>
           
           <code class="ruby">      @starts = Clock.new(8)</code>
         </li>
@@ -1982,20 +2228,20 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="11">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="52" data-linenumber="11">
+          <span class="hits">52</span>
           
           <code class="ruby">    if params[:duration]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="18" data-linenumber="12">
+          <span class="hits">18</span>
           
           <code class="ruby">      @duration = params[:duration]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="13">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="18" data-linenumber="13">
+          <span class="hits">18</span>
           
           <code class="ruby">      @ends = starts + duration</code>
         </li>
@@ -2006,14 +2252,14 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="15">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="34" data-linenumber="15">
+          <span class="hits">34</span>
           
           <code class="ruby">      if params[:ends]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="16">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="12" data-linenumber="16">
+          <span class="hits">12</span>
           
           <code class="ruby">        @ends = Clock.from(params[:ends])</code>
         </li>
@@ -2024,8 +2270,8 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="18">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="22" data-linenumber="18">
+          <span class="hits">22</span>
           
           <code class="ruby">        @ends = Clock.new(18)</code>
         </li>
@@ -2036,8 +2282,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="20">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="34" data-linenumber="20">
+          <span class="hits">34</span>
           
           <code class="ruby">      @duration = ends - starts</code>
         </li>
