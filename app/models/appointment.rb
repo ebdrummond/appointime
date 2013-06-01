@@ -1,26 +1,25 @@
 class Appointment < ActiveRecord::Base
   attr_accessible :date,
                   :start,
-                  :ending,
+                  :duration,
                   :user_id
 
   validates_presence_of :date,
                         :start,
-                        :ending,
+                        :duration,
                         :user_id
 
   belongs_to :user
 
   def self.schedule(params)
     appointment = Appointment.new(params[:appointment])
-    appointment.start = DateTime.parse("#{appointment.date}T#{appointment.start.strftime("%H:%M:00")}")
-    appointment.ending = appointment.start + params[:ending][0..1].to_i.minutes
+    appointment.start = Clock.from(Time.parse(appointment.start)).to_s
     appointment.user_id = params[:user_id]
     appointment
   end
 
   def pretty_start
-    self.start.strftime("%B %-d at %l:%M %P")
+    "#{self.date.strftime("%B %-d")} at #{Time.parse(self.start).strftime("%-l:%M")}"
   end
 
   def send_text_message

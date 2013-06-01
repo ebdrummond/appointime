@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     redirect_to root_path,
-    notice: "Not authorized to access admin section" if !current_user.admin
+    notice: "Not authorized to access admin section" unless current_user && current_user.admin
   end
 end

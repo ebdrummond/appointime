@@ -48,4 +48,8 @@ describe User do
     subject.phone = "12345678912"
     expect(subject.valid_phone_number).to eq("2345678912")
   end
+
+  it "merges first and last to create a full name" do
+    expect(subject.full_name).to eq("Meghan Peters")
+  end
 end
