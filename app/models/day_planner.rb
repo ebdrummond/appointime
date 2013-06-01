@@ -22,6 +22,7 @@ class DayPlanner
     unless Clock.from(appointments.last.start_time + appointments.last.duration * 60).time >= Clock.new(17).time
       slots << afternoon_slot
     end
+    slots.reject!{|slot| slot.duration == 0}
     slots.sort_by{|slot| slot.starts.time}
   end
 
