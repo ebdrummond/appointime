@@ -128,6 +128,47 @@ describe DayPlanner do
     end
   end
 
+  context "with three appointments, with gaps in between" do
+    let(:appt1){ stub(start_time: Time.new(2013, 1, 1, 11, 30), duration: 90) }
+    let(:appt2){ stub(start_time: Time.new(2013, 1, 1, 10), duration: 60) }
+    let(:appt3){ stub(start_time: Time.new(2013, 1, 1, 15), duration: 90) }
+    let(:appts){ [appt2, appt1, appt3] }
+    let(:day_planner){ DayPlanner.new(appts) }
+
+    it "takes in appointments" do
+      expect(day_planner.appointments).to eq(appts)
+    end
+
+    it "knows the start time and duration of the appointments" do
+      expect(day_planner.appointments.first.start_time).to eq(Time.new(2013, 1, 1, 10))
+      expect(day_planner.appointments.first.duration).to eq(60)
+    end
+
+    it "has two time slots" do
+      expect(day_planner.time_slots.count).to eq(7)
+    end
+
+    it "sorts the time slots by start time" do
+      expect(day_planner.time_slots.first.starts).to eq(Clock.new(8))
+    end
+
+    it "has start times for the time slots" do
+      expect(day_planner.time_slots[1].starts).to eq(Clock.new(10))
+    end
+
+    it "has end times for the time slots" do
+      expect(day_planner.time_slots[1].ends).to eq(Clock.new(11))
+    end
+
+    it "has durations for the time slots" do
+      expect(day_planner.time_slots[1].duration).to eq(60)
+    end
+
+    it "identifies open time slots" do
+      expect(day_planner.open_slots.count).to eq(3)
+    end
+  end
+
 
 
 
@@ -157,6 +198,6 @@ end
 
 #DONE context - beginning of day 1 appt
 #DONE context - middle of day 1 appt
-# context - end of day 1 appt
+#DONE context - end of day 1 appt
 # context - 3 appts with gaps
 # context - 2 with no gap

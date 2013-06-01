@@ -13,6 +13,9 @@ class DayPlanner
     appointments.each do |appt|
       slots << TimeSlot.new(starts: appt.start_time, duration: appt.duration)
     end
+    unless appointments.count < 2
+      slots.concat(gap_slots)
+    end
     unless Clock.from(appointments.first.start_time) == Clock.new(8)
       slots << morning_slot
     end
@@ -30,6 +33,16 @@ class DayPlanner
     TimeSlot.new(starts: appointments.last.start_time + appointments.last.duration * 60)
   end
 
+  def gap_slots
+    slots = []
+    appointments.each_with_index do |appt, index|
+      break if index == appointments.size - 1
+      next_appt = appointments[index+1]
+      slots << TimeSlot.new(starts: appt.start_time + appt.duration * 60, ends: next_appt.start_time)
+    end
+    slots
+  end
+
   def appointment_start_times
     appointments.collect{|appt| Clock.new(appt.start_time.hour, appt.start_time.min).to_s}
   end
@@ -39,8 +52,10 @@ class DayPlanner
   end
 
   def open_slots
-    time_slots.select{|ts| (time_slot_start_times - appointment_start_times).include?(ts.starts.to_s)}
+    time_slots.select{|ts| (time_slot_start_times - appointment_start_times).include?(ts.starts.to_s) && ts.duration >= 60}
   end
+
+
 
     # unless appointments.first.start_time.to_s.include?(Clock.new(8).to_s)
 
