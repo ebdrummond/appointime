@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Appointime</title>
+  <link href='http://fonts.googleapis.com/css?family=Paprika' rel='stylesheet' type='text/css'>
+  <title>New Leaf Massage</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<%= flash.notice %>
-<%= yield %>
+  <body>
+    <%= render :partial => "shared/header" %>
+    <%= render :partial => "shared/navigation" %>
+    <%= render :partial => "shared/flash_message", :locals => {:flash => flash} %>
 
-</body>
+  <div class="row">
+    <div class="span4">
+    <%= render :partial => "shared/left_sidebar" %>
+    </div>
+
+    <div class="span8">
+    <%= yield %>
+    </div>
+  </div>
+
+  </body>
 </html>

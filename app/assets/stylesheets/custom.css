@@ -1,0 +1,73 @@
+html {
+  background: no-repeat center center fixed;
+  background-color: #013220;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  font-size: 1em;
+}
+
+#header {
+  font-family: 'Paprika', cursive;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.navbar {
+  padding-top: 15px;
+}
+
+.navbar ul {
+  width: 100%;
+}
+
+.navbar ul li {
+  width: 14%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#login {
+  text-align: right;
+  font-size: 0.9em;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  margin-top: 0px;
+  font-family: arial;
+  padding-right: 10px;
+}
+
+#home-pic {
+  float: right;
+  padding-top: 40px;
+}
+
+#hours {
+  padding-top: 25px;
+}
+
+.controls-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#cell-waiver {
+  font-size: 0.9em;
+  margin-bottom: 0px;
+}

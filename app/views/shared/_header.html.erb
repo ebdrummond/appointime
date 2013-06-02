@@ -1,0 +1,14 @@
+<div class="row" id="header">
+  <center>
+    <%= link_to(image_tag("newleaf2.png", :width => 200, :height => 200), "/") %>
+    <h4>Massage and Wellness</h4>
+  </center>
+  <p id="login">
+    <% if !current_user %>
+      <%= link_to "Log in", login_path %> or <%= link_to "Sign up", signup_path %>
+    <% else %>
+      <%= "Logged in as #{current_user.first_name}" %>
+      (<%= link_to "Log out", logout_path %>)
+    <% end %>
+  </p>
+</div>
