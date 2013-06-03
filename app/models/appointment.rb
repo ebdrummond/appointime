@@ -37,5 +37,11 @@ class Appointment < ActiveRecord::Base
       :body => "Hi #{self.user.first_name}!  Just a friendly reminder you have an upcoming appointment at New Leaf Massage on #{self.pretty_start}!")
   end
 
+  def self.for_this_week
+    Appointment.where(:date => (Date.today.beginning_of_week(start_day = :sunday)..Date.today.end_of_week(start_day = :sunday)))
+  end
 
+  def end
+    Clock.new(self.start) + self.duration
+  end
 end

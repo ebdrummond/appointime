@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Welcome, #{@user.first_name}!"
     else
-      flash[:notice] = "Signup failed"
+      flash[:error] = "Signup failed"
       render :new
     end
   end

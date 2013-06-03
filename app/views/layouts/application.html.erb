@@ -13,13 +13,15 @@
     <%= render :partial => "shared/flash_message", :locals => {:flash => flash} %>
 
   <div class="row">
-    <div class="span4">
-    <%= render :partial => "shared/left_sidebar" %>
-    </div>
+    <%  unless @disable_sidebar %>
+      <div class="span4">
+      <%= render :partial => "shared/left_sidebar" %>
+      </div>
 
-    <div class="span8">
-    <%= yield %>
-    </div>
+      <div class="span8">
+    <% end %>
+      <%= yield %>
+      </div>
   </div>
 
   </body>

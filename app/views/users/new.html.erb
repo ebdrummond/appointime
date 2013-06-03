@@ -1,31 +1,29 @@
 <div class="span5">
-  <form>
-    <fieldset>
-      <legend>Sign Up</legend>
+  <fieldset>
+    <legend>Sign Up</legend>
 
-      <%= form_for @user do |f| %>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-
-        <div class="controls controls-row">
-          <%= f.text_field :first_name, :class => "input span2", :placeholder => "First name" %>
-          <%= f.text_field :last_name, :class => "input span3", :placeholder => "Last name" %>
-        </div>
-
-        <div class="controls controls-row">
-          <%= f.text_field :email, :class => "input span3", :placeholder => "Email" %>
-          <%= f.text_field :phone, :class => "input span2", :placeholder => "Cell phone" %>
-          <p id="cell-waiver">*Please note, I require your cell phone number to send text messages to remind you of appointments a few hours prior.</p>
-        </div>
-
-        <div class="controls controls-row">
-        <%= f.password_field :password, :class => "input span2", :placeholder => "Password" %>
-        <%= f.password_field :password_confirmation, :class => "input span3", :placeholder => "Password confirmation" %>
-        </div>
-
-        <%= f.submit "Sign up!", :class => "btn" %>
+    <%= form_for @user do |f| %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
-    </fieldset>
-  </form>
+
+      <div class="controls controls-row">
+        <%= f.text_field :first_name, :class => "input span2", :placeholder => "First name" %>
+        <%= f.text_field :last_name, :class => "input span3", :placeholder => "Last name" %>
+      </div>
+
+      <div class="controls controls-row">
+        <%= f.text_field :email, :class => "input span3", :placeholder => "Email" %>
+        <%= f.text_field :phone, :class => "input span2", :placeholder => "Cell phone" %>
+        <p id="cell-waiver">*Please note, I require your cell phone number to send text messages to remind you of appointments a few hours prior.</p>
+      </div>
+
+      <div class="controls controls-row">
+      <%= f.password_field :password, :class => "input span2", :placeholder => "Password" %>
+      <%= f.password_field :password_confirmation, :class => "input span3", :placeholder => "Password confirmation" %>
+      </div>
+
+      <%= f.submit "Sign up!", :class => "btn" %>
+    <% end %>
+  </fieldset>
 </div>
