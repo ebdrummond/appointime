@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   include PgSearch
+  pg_search_scope :search_by_full_name_or_email, :against => [:first_name, :last_name, :email]
 
   attr_accessible :first_name,
                   :last_name,

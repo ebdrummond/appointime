@@ -2,7 +2,7 @@ class Admin::AppointmentsController < ApplicationController
   before_filter :require_admin
 
   def clients
-    @users = User.basic_search(params[:query])
+    @users = User.search_by_full_name_or_email(params[:query])
   end
 
   def new
