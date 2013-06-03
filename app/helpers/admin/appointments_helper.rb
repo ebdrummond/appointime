@@ -1,5 +1,9 @@
 module Admin::AppointmentsHelper
   def formatted(input)
-    Time.parse(input.to_s).strftime("%-l:%M")
+    if input.class == Date
+      input.strftime("%B %-d")
+    else
+      Time.parse(input.to_s).strftime("%-l:%M")
+    end
   end
 end
