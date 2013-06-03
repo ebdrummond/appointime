@@ -1,7 +1,9 @@
 <h2>Select client</h2>
 
-<%= text_field_tag :query, "Erin", id: "clientQuery", :class => "span3", :placeholder => "Search by first or last name, or email" %>
-<a class="btn" id="clientSearch">Search</a>
+<div class="input-append">
+  <%= text_field_tag :query, "", id: "clientQuery", :class => "span3", :placeholder => "Search by name or email" %>
+  <a class="btn" id="clientSearch">Search</a>
+</div>
 
 <div id="client-results"></div>
 
