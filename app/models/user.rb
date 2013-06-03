@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  include PgSearch
 
   attr_accessible :first_name,
                   :last_name,
