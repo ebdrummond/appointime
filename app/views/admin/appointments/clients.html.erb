@@ -1,61 +1,25 @@
 <h2>Select client</h2>
 
-<%= text_field_tag :query, "", id: "clientQuery", :class => "span3", :placeholder => "Search by first or last name, or email" %>
+<%= text_field_tag :query, "Erin", id: "clientQuery", :class => "span3", :placeholder => "Search by first or last name, or email" %>
 <a class="btn" id="clientSearch">Search</a>
 
-<script id="clientView" type="text/x-handlebars-template">
-  <div class='client'>
-    <a href="{{appointment_path}}">{{full_name}}</a>, {{email}}
-  </div>
-</script>
+<div id="client-results"></div>
 
 <script type="text/javascript">
-
-var updateClientView = function (searchTerm) {
-
-  var clientsURL = "/admin/clients?query=" + searchTerm;
-
-  jQuery.getJSON(clientsURL, function(clients) {
-    console.log("You're great and I got a repsonse for you");
-    console.log(clients);
-
-    var destination = $("#client-results");
-
-    var clientTemplate = $("#clientView").html();
-    var template = Handlebars.compile(clientTemplate);
-
-    // for starting_point ; ending_point ; step
-    for (var i = 0; i < clients.length; i++) {
-      var newClientHTML = template(clients[i]);
-      console.log("New Clent HTML: " + newClientHTML);
-      destination.append(newClientHTML);
-    };
-
-  });
-
-};
-
-$(document).ready(updateClientView);
 $(document).ready(function() {
 
-  var clientSearch = $("#clientSearch");
-  // add the click event
-  clientSearch.on("click",function() {
-    console.log("Hello you are searching for something aren't you");
-
+  $("#clientSearch").on("click",function() {
     var searchTerm = $("#clientQuery").val();
-
-    // find client query box
-    // take data from query
     updateClientView(searchTerm);
-    // what if data is already there
-
   });
 
-
 });
-
 </script>
 
-<div id="client-results">
-</div>
+<script id="clientsView" type="text/x-handlebars-template">
+  {{#each clients}}
+    <div class='client'>
+      <a href="{{appointment_path}}">{{full_name}}</a>, {{email}}
+    </div>
+  {{/each}}
+</script>
