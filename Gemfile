@@ -4,8 +4,8 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'twilio-ruby'
+gem 'pg_search'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
