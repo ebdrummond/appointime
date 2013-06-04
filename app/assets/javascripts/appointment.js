@@ -42,4 +42,8 @@ $(document).ready(function() {
     min: [9,0],
     max: [17,0]
   });
+
+  $(document).on("click", ":radio[name=appt_slot]", function() {
+      $(".appt-submit").show();
+  });
 });

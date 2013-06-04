@@ -2,8 +2,12 @@ class Clock
   def self.from(time)
     if time.class == String
       time = Time.parse(time.to_s)
+      Clock.new(time.hour, time.min)
+    elsif time.class == Time
+      Clock.new(time.hour, time.min)
+    else
+      Clock.new(time.hour, time.minutes)
     end
-    Clock.new(time.hour, time.min)
   end
 
   attr_reader :time, :hour, :minutes

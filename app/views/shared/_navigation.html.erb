@@ -2,9 +2,9 @@
   <div class="navbar-inner">
     <ul class="nav">
       <li><a href="/">Home</a></li>
-      <li><a href="#">About Meghan</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">FAQ</a></li>
+      <li><%= link_to "About Meghan", about_path %></li>
+      <li><%= link_to "Services", services_path %></li>
+      <li><%= link_to "FAQ", faq_path %></li>
       <li><a href="#">Location</a></li>
       <li><a href="#">Book now!</a></li>
       <% if current_user && current_user.admin %>

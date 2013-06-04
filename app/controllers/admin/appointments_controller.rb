@@ -28,7 +28,7 @@ class Admin::AppointmentsController < ApplicationController
 
       format.json do
         @appointments = Appointment.for_this(Date.parse(params[:date]))
-        @open_slots = DayPlanner.new(@appointments).open_slots
+        @open_slots = DayPlanner.new(@appointments).appt_slots(params[:duration])
 
         render json: @open_slots
       end

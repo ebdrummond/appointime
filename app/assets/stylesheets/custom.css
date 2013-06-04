@@ -82,4 +82,10 @@ body {
 
 .appt-date-wrapper {
   display: none;
+  padding-top: 20px;
+}
+
+.appt-submit {
+  padding-top: 20px;
+  display: none;
 }

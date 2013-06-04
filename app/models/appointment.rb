@@ -12,9 +12,11 @@ class Appointment < ActiveRecord::Base
   belongs_to :user
 
   def self.schedule(params)
-    appointment = Appointment.new(params[:appointment])
-    appointment.start = Clock.from(Time.parse(appointment.start)).to_s
-    appointment.user_id = params[:user_id]
+    appointment = Appointment.new
+    appointment.date = params[:date]
+    appointment.start = params[:appt_slot].gsub(", ", ":")
+    appointment.duration = params[:duration]
+    appointment.user_id = params[:appointment][:user_id]
     appointment
   end
 
@@ -46,7 +48,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def end
-    Clock.new(self.start) + self.duration
+    Clock.from(Time.parse(self.start)) + self.duration
   end
 
   def self.for_this(date)

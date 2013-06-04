@@ -1,34 +1,35 @@
 <h2><%= "New appointment for #{@user.full_name}" %></h2>
 
-<h4>First, select a service</h4>
-<%= radio_button_tag :duration, 60 %> &nbsp;60 minute massage&nbsp;
-<%= radio_button_tag :duration, 90 %> &nbsp;90 minute massage
+<div class="appt-wrapper">
+<%= form_for [:admin, @appointment] do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
 
-<div class="appt-date-wrapper">
-  <h2>Next, select date</h2>
-  <%= text_field_tag :date, "", id: "appt_date" %>
-</div>
+  <h4>First, select a service</h4>
+  <%= radio_button_tag :duration, 60 %> &nbsp;60 minute massage&nbsp;
+  <%= radio_button_tag :duration, 90 %> &nbsp;90 minute massage
 
-<div id="open-slot-results"></div>
+  <div class="appt-date-wrapper">
+    <h4>Next, select a date</h4>
+    <%= text_field_tag :date, "", id: "appt_date" %>
+  </div>
 
-<script id="openSlotsView" type="text/x-handlebars-template">
-  {{#each open_slots}}
-    <div class='open_slot'>
-      {{starts}}
-    </div>
-  {{/each}}
-</script>
+  <div id="open-slot-results">
+  </div>
 
-<% 15.times do %>
-  <br>
+  <div class="appt-submit">
+
+    <%= button_to "Book appointment!", :class => "btn btn-large btn-success" %>
+  </div>
 <% end %>
 
-<p><%#= f.label :start, "Start Time" %><br>
-<%#= f.text_field :start, id: "appt_start" %></p>
-Duration
-<p><%#= f.radio_button :duration, 60 %>60 minutes</p>
-<p><%#= f.radio_button :duration, 90 %>90 minutes</p>
-<%#= hidden_field_tag(:user_id, @user.id) %>
-<p><%#= f.submit "Book appointment!" %></p>
-<%# end %>
+  <script id="openSlotsView" type="text/x-handlebars-template">
+    <h4>Lastly, select an appointment time</h4>
+    {{#each open_slots}}
+      <div class='open_slot'>
+        <%= radio_button_tag :appt_slot, "{{starts.hour}}, {{starts.minutes}}" %> {{starts.hour}}:{{starts.minutes}}
+      </div>
+    {{/each}}
+  </script>
+</div>
+
 

@@ -4,8 +4,8 @@ require 'pry'
 class DayPlanner
   attr_reader :appointments
 
-  def initialize(appointments)
-    @appointments = appointments.sort_by{|appt| appt.start}
+  def initialize(appointments = [])
+    @appointments = appointments.sort_by{|appt| Time.parse(appt.start)}
   end
 
   def time_slots
@@ -56,6 +56,23 @@ class DayPlanner
 
   def open_slots
     time_slots.select{|ts| (time_slot_start_times - appointment_start_times).include?(ts.starts.to_s) && ts.duration >= 60}
+  end
+
+  def appt_slots(duration)
+    slots = [open_slots]
+    open_slots.each do |os|
+      if duration == "60"
+        iterations = (os.duration / 30 - 2).to_i
+      else
+        iterations = (os.duration / 30 - 3).to_i
+      end
+      start = os.starts
+      iterations.times do
+        slots << TimeSlot.new(starts: start + 30, ends: os.ends)
+        start += 30
+      end
+    end
+    slots.flatten.sort_by{|s| s.starts.to_s }
   end
 end
 

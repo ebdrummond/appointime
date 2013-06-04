@@ -8,6 +8,10 @@ Appointime::Application.routes.draw do
     get 'login', to: 'sessions#new', as: 'login'
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+  get 'about_meghan', to: 'extras#about', as: 'about'
+  get 'services', to: 'extras#services', as: 'services'
+  get 'faq', to: 'extras#faq', as: 'faq'
+
   namespace :admin do
     resource :dashboard, :only => :show
     resources :appointments
