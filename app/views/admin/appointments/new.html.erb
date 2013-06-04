@@ -9,6 +9,16 @@
   <%= text_field_tag :date, "", id: "appt_date" %>
 </div>
 
+<div id="open-slot-results"></div>
+
+<script id="openSlotsView" type="text/x-handlebars-template">
+  {{#each open_slots}}
+    <div class='open_slot'>
+      {{starts}}
+    </div>
+  {{/each}}
+</script>
+
 <% 15.times do %>
   <br>
 <% end %>

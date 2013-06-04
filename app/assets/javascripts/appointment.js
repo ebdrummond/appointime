@@ -22,7 +22,17 @@ $(document).ready(function() {
       console.log(selectedDuration)
 
       var apptURL = window.location + "&date=" + selectedDate + "&duration=" + selectedDuration;
-      jQuery.getJSON(apptURL);
+      jQuery.getJSON(apptURL, function(open_slots) {
+
+        var destination = $("#open-slot-results");
+        destination.html("");
+
+        var openSlotsTemplate = $("#openSlotsView").html();
+        var multi_slot_template = Handlebars.compile(openSlotsTemplate);
+
+        destination.append(multi_slot_template({open_slots: open_slots}));
+
+      });
     }
   });
 
