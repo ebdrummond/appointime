@@ -7,7 +7,6 @@ class Admin::AppointmentsController < ApplicationController
     respond_to do |format|
       format.html
 
-
       format.json do
         @users = @users.map do |user|
           { full_name: user.full_name,
@@ -23,6 +22,17 @@ class Admin::AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @user = User.find(params[:user_id])
+
+    respond_to do |format|
+      format.html
+
+      format.json do
+        @appointments = Appointment.for_this(Date.parse(params[:date]))
+        @open_slots = DayPlanner.new(@appointments).open_slots
+
+        render json: @open_slots
+      end
+    end
   end
 
   def create

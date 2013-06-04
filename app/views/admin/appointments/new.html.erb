@@ -1,14 +1,24 @@
-<%= "New appointment for #{@user.full_name}" %>
+<h2><%= "New appointment for #{@user.full_name}" %></h2>
 
-<h2>Select date</h2>
-<%= form_for [:admin, @appointment] do |f| %>
-<p><%= f.label :date %><br>
-<%= f.text_field :date, id: "appt_date" %></p>
-<p><%= f.label :start, "Start Time" %><br>
-<%= f.text_field :start, id: "appt_start" %></p>
-Duration
-<p><%= f.radio_button :duration, 60 %>60 minutes</p>
-<p><%= f.radio_button :duration, 90 %>90 minutes</p>
-<%= hidden_field_tag(:user_id, @user.id) %>
-<p><%= f.submit "Book appointment!" %></p>
+<h4>First, select a service</h4>
+<%= radio_button_tag :duration, 60 %> &nbsp;60 minute massage&nbsp;
+<%= radio_button_tag :duration, 90 %> &nbsp;90 minute massage
+
+<div class="appt-date-wrapper">
+  <h2>Next, select date</h2>
+  <%= text_field_tag :date, "", id: "appt_date" %>
+</div>
+
+<% 15.times do %>
+  <br>
 <% end %>
+
+<p><%#= f.label :start, "Start Time" %><br>
+<%#= f.text_field :start, id: "appt_start" %></p>
+Duration
+<p><%#= f.radio_button :duration, 60 %>60 minutes</p>
+<p><%#= f.radio_button :duration, 90 %>90 minutes</p>
+<%#= hidden_field_tag(:user_id, @user.id) %>
+<p><%#= f.submit "Book appointment!" %></p>
+<%# end %>
+

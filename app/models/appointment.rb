@@ -48,4 +48,8 @@ class Appointment < ActiveRecord::Base
   def end
     Clock.new(self.start) + self.duration
   end
+
+  def self.for_this(date)
+    Appointment.find_all_by_date(date)
+  end
 end

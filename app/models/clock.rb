@@ -1,5 +1,8 @@
 class Clock
   def self.from(time)
+    if time.class == String
+      time = Time.parse(time.to_s)
+    end
     Clock.new(time.hour, time.min)
   end
 

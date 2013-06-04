@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $(":radio[name=duration]").on("click", function() {
+    $(".appt-date-wrapper").show();
+  });
+
   var today = new Date();
   var twomonths = new Date(today.setMonth(today.getMonth()+2));
 
@@ -10,7 +14,16 @@ $(document).ready(function() {
     max: twomonths,
     disable: [
         1, 7
-    ]
+    ],
+    onSet: function() {
+      var selectedDate = this.get();
+      console.log(selectedDate)
+      var selectedDuration = $(":radio[name=duration]:checked").val();
+      console.log(selectedDuration)
+
+      var apptURL = window.location + "&date=" + selectedDate + "&duration=" + selectedDuration;
+      jQuery.getJSON(apptURL);
+    }
   });
 
   $( "input[id=appt_start]" ).pickatime({
