@@ -14,7 +14,7 @@ class Appointment < ActiveRecord::Base
   def self.schedule(params)
     appointment = Appointment.new
     appointment.date = params[:date]
-    appointment.start = params[:appt_slot].gsub(", ", ":")
+    appointment.start = Time.parse(params[:appt_slot].gsub(", ", ":"))
     appointment.duration = params[:duration]
     appointment.user_id = params[:appointment][:user_id]
     appointment
