@@ -1,11 +1,9 @@
-require 'spec_helper'
-
 describe Appointment do
   let(:user){ stub(id: 1) }
 
   subject do
     Appointment.new(date: Date.new(2013, 6, 6),
-                    start: Clock.new(9, 30).to_s,
+                    start: Clock.new(9, 30).time,
                     duration: 90,
                     user_id: user.id)
   end

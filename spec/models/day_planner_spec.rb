@@ -1,18 +1,14 @@
-require './app/models/day_planner'
-require './app/models/time_slot'
-require './app/models/clock'
-
 describe DayPlanner do
   it "sorts the appointments by start time" do
-    appt1 = stub(start: "15:00", duration: 90)
-    appt2 = stub(start: "8:00", duration: 90)
+    appt1 = stub(start: Clock.new(15).time, duration: 90)
+    appt2 = stub(start: Clock.new(8).time, duration: 90)
     appts = [appt1, appt2]
 
     expect(DayPlanner.new(appts).appointments).to eq([appt2, appt1])
   end
 
   context "with a single appointment in the middle of the day" do
-    let(:appt1){ stub(start: "10:30", duration: 90) }
+    let(:appt1){ stub(start: Clock.new(10, 30).time, duration: 90) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -21,7 +17,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq("10:30")
+      expect(day_planner.appointments.first.start).to eq(Clock.new(10, 30).time)
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -51,7 +47,7 @@ describe DayPlanner do
   end
 
   context "with a single appointment at the beginning of the day" do
-    let(:appt1){ stub(start: "8:00", duration: 90) }
+    let(:appt1){ stub(start: Clock.new(8).time, duration: 90) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -60,7 +56,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq("8:00")
+      expect(day_planner.appointments.first.start).to eq(Clock.new(8).time)
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -89,16 +85,16 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots_sixty.count).to eq(16)
+      expect(day_planner.appt_slots(60).count).to eq(16)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots_ninety.count).to eq(15)
+      expect(day_planner.appt_slots(90).count).to eq(15)
     end
   end
 
   context "with a single appointment at the end of the day" do
-    let(:appt1){ stub(start: "16:30", duration: 90) }
+    let(:appt1){ stub(start: Clock.new(16, 30).time, duration: 90) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -107,7 +103,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq("16:30")
+      expect(day_planner.appointments.first.start).to eq(Clock.new(16, 30).time)
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -136,18 +132,18 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots_sixty.count).to eq(16)
+      expect(day_planner.appt_slots(60).count).to eq(16)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots_ninety.count).to eq(15)
+      expect(day_planner.appt_slots(90).count).to eq(15)
     end
   end
 
   context "with three appointments, with gaps in between" do
-    let(:appt1){ stub(start: "11:30", duration: 90) }
-    let(:appt2){ stub(start: "10:00", duration: 60) }
-    let(:appt3){ stub(start: "15:00", duration: 90) }
+    let(:appt1){ stub(start: Clock.new(11, 30).time, duration: 90) }
+    let(:appt2){ stub(start: Clock.new(10).time, duration: 60) }
+    let(:appt3){ stub(start: Clock.new(15).time, duration: 90) }
     let(:appts){ [appt2, appt1, appt3] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -156,7 +152,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq("10:00")
+      expect(day_planner.appointments.first.start).to eq(Clock.new(10).time)
       expect(day_planner.appointments.first.duration).to eq(60)
     end
 
@@ -185,18 +181,18 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots_sixty.count).to eq(8)
+      expect(day_planner.appt_slots(60).count).to eq(8)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots_ninety.count).to eq(5)
+      expect(day_planner.appt_slots(90).count).to eq(5)
     end
   end
 
   context "with three appointments, two back to back" do
-    let(:appt1){ stub(start: "11:00", duration: 90) }
-    let(:appt2){ stub(start: "10:00", duration: 60) }
-    let(:appt3){ stub(start: "15:00", duration: 90) }
+    let(:appt1){ stub(start: Clock.new(11).time, duration: 90) }
+    let(:appt2){ stub(start: Clock.new(10).time, duration: 60) }
+    let(:appt3){ stub(start: Clock.new(15).time, duration: 90) }
     let(:appts){ [appt2, appt1, appt3] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -205,7 +201,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq("10:00")
+      expect(day_planner.appointments.first.start).to eq(Clock.new(10).time)
       expect(day_planner.appointments.first.duration).to eq(60)
     end
 
@@ -234,11 +230,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots_sixty.count).to eq(9)
+      expect(day_planner.appt_slots(60).count).to eq(9)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots_ninety.count).to eq(6)
+      expect(day_planner.appt_slots(90).count).to eq(6)
     end
   end
 end

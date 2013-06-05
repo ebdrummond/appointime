@@ -1,5 +1,3 @@
-require './app/models/clock'
-
 describe Clock do
   it "can take in just an hour" do
     expect(Clock.new(15).to_s).to eq("15:00")

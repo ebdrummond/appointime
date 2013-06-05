@@ -1,6 +1,3 @@
-require './app/models/clock'
-require './app/models/time_slot'
-
 describe TimeSlot do
   let(:appt){ stub(start_time: Time.new(2013, 1, 1, 15), duration: 90) }
 

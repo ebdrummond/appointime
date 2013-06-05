@@ -21,7 +21,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def pretty_start
-    "#{self.date.strftime("%B %-d")} at #{Time.parse(self.start).strftime("%-l:%M")}"
+    "#{self.date.strftime("%B %-d")} at #{self.start.strftime("%-l:%M")}"
   end
 
   def send_text_message
