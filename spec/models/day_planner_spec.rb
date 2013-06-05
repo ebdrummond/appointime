@@ -1,7 +1,7 @@
 describe DayPlanner do
   it "sorts the appointments by start time" do
-    appt1 = stub(start: Clock.new(15).time, duration: 90)
-    appt2 = stub(start: Clock.new(8).time, duration: 90)
+    appt1 = stub(start: Clock.new(15).time.to_datetime, duration: 90)
+    appt2 = stub(start: Clock.new(8).time.to_datetime, duration: 90)
     appts = [appt1, appt2]
 
     expect(DayPlanner.new(appts).appointments).to eq([appt2, appt1])
@@ -47,7 +47,7 @@ describe DayPlanner do
   end
 
   context "with a single appointment at the beginning of the day" do
-    let(:appt1){ stub(start: Clock.new(8).time, duration: 90) }
+    let(:appt1){ stub(start: Clock.new(8).time.to_datetime, duration: 90) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -85,11 +85,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots(60).count).to eq(16)
+      expect(day_planner.appt_slots("60").count).to eq(16)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots(90).count).to eq(15)
+      expect(day_planner.appt_slots("90").count).to eq(15)
     end
   end
 
@@ -132,11 +132,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots(60).count).to eq(16)
+      expect(day_planner.appt_slots("60").count).to eq(16)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots(90).count).to eq(15)
+      expect(day_planner.appt_slots("90").count).to eq(15)
     end
   end
 
@@ -181,11 +181,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots(60).count).to eq(8)
+      expect(day_planner.appt_slots("60").count).to eq(8)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots(90).count).to eq(5)
+      expect(day_planner.appt_slots("90").count).to eq(5)
     end
   end
 
@@ -230,11 +230,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots(60).count).to eq(9)
+      expect(day_planner.appt_slots("60").count).to eq(9)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots(90).count).to eq(6)
+      expect(day_planner.appt_slots("90").count).to eq(6)
     end
   end
 
@@ -256,11 +256,11 @@ describe DayPlanner do
     end
 
     it "identifies available appointment slots for 60 minute massages" do
-      expect(day_planner.appt_slots(60).count).to eq(19)
+      expect(day_planner.appt_slots("60").count).to eq(19)
     end
 
     it "identifies available appointment slots for 90 minute massages" do
-      expect(day_planner.appt_slots(90).count).to eq(18)
+      expect(day_planner.appt_slots("90").count).to eq(18)
     end
   end
 end

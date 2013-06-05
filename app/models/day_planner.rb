@@ -32,7 +32,7 @@ class DayPlanner
   end
 
   def afternoon_slot
-    TimeSlot.new(starts: appointments.last.start + appointments.last.duration * 60)
+    TimeSlot.new(starts: appointments.last.start + (appointments.last.duration).minutes)
   end
 
   def gap_slots
@@ -40,7 +40,7 @@ class DayPlanner
     appointments.each_with_index do |appt, index|
       break if index == appointments.size - 1
       next_appt = appointments[index+1]
-      slots << TimeSlot.new(starts: appt.start + appt.duration * 60, ends: next_appt.start)
+      slots << TimeSlot.new(starts: appt.start + appt.duration.minutes, ends: next_appt.start)
     end
     slots
   end
@@ -62,7 +62,7 @@ class DayPlanner
   def appt_slots(duration)
     slots = []
     open_slots.each do |os|
-      if duration == 60
+      if duration == "60"
         iterations = (os.duration / 30 - 1).to_i
       else
         iterations = (os.duration / 30 - 2).to_i
