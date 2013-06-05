@@ -11,6 +11,7 @@ class TimeSlot
     if params[:duration]
       @duration = params[:duration]
       @ends = starts + duration
+
     else
       if params[:ends]
         @ends = Clock.from(params[:ends])

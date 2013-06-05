@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'twilio-ruby'
 gem 'pg_search'
+gem 'faker'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
