@@ -1,12 +1,8 @@
 $(document).ready(function() {
-  $(":radio[name=duration]").on("click", function() {
-    $(".appt-date-wrapper").show();
-  });
-
   var today = new Date();
   var twomonths = new Date(today.setMonth(today.getMonth()+2));
 
-  $( "input[id=appt_date]" ).pickadate({
+  var date_picker = $( "input[id=appt_date]" ).pickadate({
     format: 'dddd, mmmm d, yyyy',
     today: '',
     clear: 'Clear selection',
@@ -17,11 +13,9 @@ $(document).ready(function() {
     ],
     onSet: function() {
       var selectedDate = this.get();
-      console.log(selectedDate)
       var selectedDuration = $(":radio[name=duration]:checked").val();
-      console.log(selectedDuration)
-
-      var apptURL = window.location + "&date=" + selectedDate + "&duration=" + selectedDuration;
+      var user_id = $(':input[name="appointment[user_id]"]').val();
+      var apptURL = "/admin/appointments/new?date=" + selectedDate + "&duration=" + selectedDuration + "&user_id=" + user_id;
       jQuery.getJSON(apptURL, function(open_slots) {
 
         var destination = $("#open-slot-results");
@@ -33,6 +27,15 @@ $(document).ready(function() {
         destination.append(multi_slot_template({open_slots: open_slots}));
 
       });
+    }
+  });
+
+  $(":radio[name=duration]").on("click", function() {
+    $(".appt-date-wrapper").show();
+
+    var selectedDate = date_picker.pickadate('picker').get();
+    if (selectedDate) {
+      date_picker.pickadate('picker').set();
     }
   });
 

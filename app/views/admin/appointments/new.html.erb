@@ -1,35 +1,3 @@
 <h2><%= "New appointment for #{@user.full_name}" %></h2>
 
-<div class="appt-wrapper">
-<%= form_for [:admin, @appointment] do |f| %>
-  <%= f.hidden_field :user_id, :value => @user.id %>
-
-  <h4>First, select a service</h4>
-  <%= radio_button_tag :duration, 60 %> &nbsp;60 minute massage&nbsp;
-  <%= radio_button_tag :duration, 90 %> &nbsp;90 minute massage
-
-  <div class="appt-date-wrapper">
-    <h4>Next, select a date</h4>
-    <%= text_field_tag :date, "", id: "appt_date" %>
-  </div>
-
-  <div id="open-slot-results">
-  </div>
-
-  <div class="appt-submit">
-
-    <%= button_to "Book appointment!", :class => "btn btn-large btn-success" %>
-  </div>
-<% end %>
-
-  <script id="openSlotsView" type="text/x-handlebars-template">
-    <h4>Lastly, select an appointment time</h4>
-    {{#each open_slots}}
-      <div class='open_slot'>
-        <%= radio_button_tag :appt_slot, "{{starts.hour}}, {{starts.minutes}}" %> {{starts.hour}}:{{starts.minutes}}
-      </div>
-    {{/each}}
-  </script>
-</div>
-
-
+<%= render :partial => "form" %>

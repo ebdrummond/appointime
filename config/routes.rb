@@ -11,6 +11,8 @@ Appointime::Application.routes.draw do
   get 'about_meghan', to: 'extras#about', as: 'about'
   get 'services', to: 'extras#services', as: 'services'
   get 'faq', to: 'extras#faq', as: 'faq'
+  get 'location', to: 'extras#location', as: 'location'
+
 
   namespace :admin do
     resource :dashboard, :only => :show

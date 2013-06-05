@@ -9,4 +9,7 @@ class ExtrasController < ApplicationController
   def faq
   end
 
+  def location
+  end
+
 end

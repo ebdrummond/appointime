@@ -5,12 +5,12 @@
       <li><%= link_to "About Meghan", about_path %></li>
       <li><%= link_to "Services", services_path %></li>
       <li><%= link_to "FAQ", faq_path %></li>
-      <li><a href="#">Location</a></li>
+      <li><%= link_to "Location", location_path %></li>
       <li><a href="#">Book now!</a></li>
       <% if current_user && current_user.admin %>
         <li><%= link_to "Dashboard", admin_dashboard_path %></li>
       <% elsif current_user %>
-        <li><a href="#">Account</a></li>
+        <li><%= link_to "Account", user_path(current_user) %></a></li>
       <% end %>
     </ul>
   </div>

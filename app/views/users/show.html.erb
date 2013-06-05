@@ -1,0 +1,46 @@
+<h3><%= "My New Leaf Profile" %></h3>
+
+<div class="row">
+  <div class="span4">
+    <table class="table">
+      <tr>
+        <td>Name</td>
+        <td><%= @user.full_name %></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td>Cell phone</td>
+        <td><%= formatted_phone(@user.phone) %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<%= button_to "Edit my info", edit_user_path(@user), method: :get, :class => "btn" %>
+
+<div class="row">
+<div class="span7">
+<h3>Massage History</h3>
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>Start Time</th>
+    <th>Service</th>
+  </tr>
+<% @appointments.each do |appt| %>
+  <tr>
+    <td><%= "#{formatted(appt.date)}, #{appt.date.year}" %></td>
+    <td><%= formatted(appt.start) %></td>
+    <td><%= appt.duration %> minute massage</td>
+    <% if appt.date > Date.today %>
+    <td><%= link_to "Edit", root_path %></td>
+    <td><%= link_to "Cancel", root_path %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+</div>
+</div>
