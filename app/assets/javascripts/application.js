@@ -19,6 +19,6 @@
 //= require picker.date
 //= require handlebars
 //= require appointment
-//= require client
+//= require clients
 //= require legacy
 //= require_tree .
