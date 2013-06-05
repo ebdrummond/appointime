@@ -48,7 +48,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def end
-    Clock.from(Time.parse(self.start)) + self.duration
+    (Clock.from(self.start) + self.duration).time
   end
 
   def self.for_this(date)

@@ -2,8 +2,10 @@ module ApplicationHelper
   def formatted(input)
     if input.class == Date
       input.strftime("%B %-d")
+    elsif input == DateTime
+      Time.parse(input).strftime("%-l:%M")
     else
-      Time.parse(input.to_s).strftime("%-l:%M")
+      input.strftime("%-l:%M")
     end
   end
 end
