@@ -1,6 +1,3 @@
-require 'time'
-require 'pry'
-
 class DayPlanner
   attr_reader :appointments
 
