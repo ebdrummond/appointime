@@ -6,21 +6,25 @@ class DayPlanner
   end
 
   def time_slots
-    slots = []
-    appointments.each do |appt|
-      slots << TimeSlot.new(starts: appt.start, duration: appt.duration)
+    unless appointments.empty?
+      slots = []
+      appointments.each do |appt|
+        slots << TimeSlot.new(starts: appt.start, duration: appt.duration)
+      end
+      unless appointments.count < 2
+        slots.concat(gap_slots)
+      end
+      unless Clock.from(appointments.first.start) == Clock.new(8)
+        slots << morning_slot
+      end
+      unless Clock.from(appointments.last.start + appointments.last.duration * 60).time >= Clock.new(17).time
+        slots << afternoon_slot
+      end
+      slots.reject!{|slot| slot.duration == 0}
+      slots.sort_by{|slot| slot.starts.time}
+    else
+      [TimeSlot.new(starts: Clock.new(8).time, ends: Clock.new(18).time)]
     end
-    unless appointments.count < 2
-      slots.concat(gap_slots)
-    end
-    unless Clock.from(appointments.first.start) == Clock.new(8)
-      slots << morning_slot
-    end
-    unless Clock.from(appointments.last.start + appointments.last.duration * 60).time >= Clock.new(17).time
-      slots << afternoon_slot
-    end
-    slots.reject!{|slot| slot.duration == 0}
-    slots.sort_by{|slot| slot.starts.time}
   end
 
   def morning_slot

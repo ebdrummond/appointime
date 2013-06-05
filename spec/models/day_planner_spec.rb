@@ -237,4 +237,30 @@ describe DayPlanner do
       expect(day_planner.appt_slots(90).count).to eq(6)
     end
   end
+
+  context "no appointments scheduled" do
+    let(:day_planner){ DayPlanner.new }
+
+    it "takes in appointments" do
+      expect(day_planner.appointments).to eq([])
+    end
+
+    it "has one time slot that starts at 8 and ends at 6" do
+      expect(day_planner.time_slots.count).to eq(1)
+      expect(day_planner.time_slots.first.starts).to eq(Clock.new(8))
+      expect(day_planner.time_slots.first.ends).to eq(Clock.new(18))
+    end
+
+    it "identifies open time slots" do
+      expect(day_planner.open_slots.count).to eq(1)
+    end
+
+    it "identifies available appointment slots for 60 minute massages" do
+      expect(day_planner.appt_slots(60).count).to eq(19)
+    end
+
+    it "identifies available appointment slots for 90 minute massages" do
+      expect(day_planner.appt_slots(90).count).to eq(18)
+    end
+  end
 end
