@@ -49,6 +49,6 @@ class Appointment < ActiveRecord::Base
   end
 
   def text_time
-    hours_before_appointment - 3
+    hours_before_appointment + 3
   end
 end
