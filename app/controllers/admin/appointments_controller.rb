@@ -40,7 +40,7 @@ class Admin::AppointmentsController < ApplicationController
 
     if @appointment.save
       EmailsWorker.perform_async(@appointment.id)
-      #@appointment.send_text_message
+      TextsWorker.perform_in(@appointment.text_time.hours, @appointment.id)
       redirect_to admin_appointment_path(@appointment), notice: "Appointment created!"
     else
       redirect_to admin_dashboard_path, notice: "Appointment failed to save"

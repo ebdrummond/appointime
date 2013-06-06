@@ -39,4 +39,16 @@ class Appointment < ActiveRecord::Base
   def self.for_this(date)
     Appointment.find_all_by_date(date)
   end
+
+  def appointment_time
+    self.date.to_time + self.start.hour * 60 * 60
+  end
+
+  def hours_before_appointment
+    ((appointment_time - self.created_at) / 3600).to_i
+  end
+
+  def text_time
+    hours_before_appointment - 3
+  end
 end
