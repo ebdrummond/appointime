@@ -1,0 +1,21 @@
+<h4><%= "Appointment for #{@appointment.user.full_name}" %></h4>
+
+
+<table class="table table-bordered appt-show">
+  <tr>
+    <th>Date</th>
+    <th>Start</th>
+    <th>End</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= formatted(@appointment.date) %></td>
+    <td><%= formatted(@appointment.start) %></td>
+    <td><%= formatted(@appointment.end) %></td>
+    <td><%= link_to "Edit", edit_appointment_path(@appointment) %></td>
+    <td><%= link_to "Cancel", appointment_path(@appointment), method: :delete, :confirm => "Are you sure you want to delete this appointment?" %>
+  </tr>
+</table>
+
+If you need to change your appointment the day of, please call me at (586) 604-8834.

@@ -6,10 +6,10 @@
   <body>
     <p>Hi <%= @appointment.user.first_name %>,</p><br>
     <p>
-      You have successfully booked a <%= @appointment.duration %> minute massage at New Leaf on <%= @appointment.pretty_start %>.
+      You have successfully updated your <%= @appointment.duration %> minute massage appointment at New Leaf to <%= @appointment.pretty_start %>.
     </p>
     <p>
-      If you need to change your appointment, please do so <a href="newleafmassage.net/appointments/<%= @appointment.id %>">here</a>.
+      If you need to change your appointment again, please do so <a href="newleafmassage.net/appointments/<%= @appointment.id %>">here</a>.
     </p>
     <p>Thanks again, and see you soon!</p>
     <p>Meghan Peters, LMT</p>

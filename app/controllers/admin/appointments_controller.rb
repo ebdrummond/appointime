@@ -67,6 +67,20 @@ class Admin::AppointmentsController < ApplicationController
     end
   end
 
+  def update
+    @appointment = Appointment.find(params[:id])
+
+    @appointment.update_info(params)
+
+    if @appointment.save
+      UpdatesWorker.perform_async(@appointment.id)
+      TextsWorker.perform_in(@appointment.text_time.hours, @appointment.id)
+      redirect_to admin_appointment_path(@appointment), notice: "Appointment updated!"
+    else
+      redirect_to admin_dashboard_path, notice: "Appointment failed to save"
+    end
+  end
+
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy

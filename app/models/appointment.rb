@@ -20,6 +20,13 @@ class Appointment < ActiveRecord::Base
     appointment
   end
 
+  def update_info(params)
+    self.date = params[:date]
+    self.start = Time.parse(params[:appt_slot].gsub(", ", ":"))
+    self.duration = params[:duration]
+    self
+  end
+
   def pretty_start
     "#{self.date.strftime("%B %-d")} at #{self.start.strftime("%-l:%M")}"
   end
@@ -45,7 +52,11 @@ class Appointment < ActiveRecord::Base
   end
 
   def hours_before_appointment
-    ((appointment_time - self.created_at) / 3600).to_i
+    (seconds_before_appointment / 3600).to_i
+  end
+
+  def seconds_before_appointment
+    appointment_time - self.created_at
   end
 
   def text_time

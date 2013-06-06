@@ -7,4 +7,10 @@ class Emailer < ActionMailer::Base
           subject: "Appointment confirmed!" )
   end
 
+  def update_email(appointment)
+    @appointment = appointment
+    mail( to: @appointment.user.email,
+          subject: "Appointment updated!" )
+  end
+
 end
