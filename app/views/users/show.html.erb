@@ -24,20 +24,27 @@
 <div class="row">
 <div class="span7">
 <h3>Massage History</h3>
-<table class="table">
+<table class="table table-striped">
   <tr>
     <th>Date</th>
     <th>Start Time</th>
     <th>Service</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 <% @appointments.each do |appt| %>
   <tr>
     <td><%= "#{formatted(appt.date)}, #{appt.date.year}" %></td>
     <td><%= formatted(appt.start) %></td>
     <td><%= appt.duration %> minute massage</td>
+    <td><%= link_to "View", appointment_path(appt) %></td>
     <% if appt.date > Date.today %>
-    <td><%= link_to "Edit", edit_appointment_path(appt) %></td>
-    <td><%= link_to "Cancel", appointment_path(appt), method: :destroy %></td>
+      <td><%= link_to "Edit", edit_appointment_path(appt) %></td>
+      <td><%= link_to "Cancel", appointment_path(appt), method: :delete, :confirm => "Are you sure you want to delete this appointment?" %></td>
+    <% else %>
+      <td></td>
+      <td></td>
     <% end %>
   </tr>
 <% end %>

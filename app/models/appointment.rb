@@ -52,7 +52,11 @@ class Appointment < ActiveRecord::Base
   end
 
   def hours_before_appointment
-    ((appointment_time - self.created_at) / 3600).to_i
+    (seconds_before_appointment / 3600).to_i
+  end
+
+  def seconds_before_appointment
+    appointment_time - self.created_at
   end
 
   def text_time

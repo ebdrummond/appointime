@@ -70,7 +70,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
-    redirect_to admin_dashboard_path,
+    redirect_to user_path(@appointment.user.id),
     notice: "Appointment cancelled"
   end
 
