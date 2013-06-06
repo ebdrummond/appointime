@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @appointments = @user.appointments
+    @appointments = @user.appointments.sort_by{|a| a.appointment_time}
   end
 
   def edit
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   def authorize_access
+    @user = User.find(params[:id])
     if current_user == nil || (@user != current_user unless current_user.admin)
       flash[:error] = "You are not authorized to view this page."
       redirect_to root_path

@@ -36,8 +36,8 @@
     <td><%= formatted(appt.start) %></td>
     <td><%= appt.duration %> minute massage</td>
     <% if appt.date > Date.today %>
-    <td><%= link_to "Edit", root_path %></td>
-    <td><%= link_to "Cancel", root_path %></td>
+    <td><%= link_to "Edit", edit_appointment_path(appt) %></td>
+    <td><%= link_to "Cancel", appointment_path(appt), method: :destroy %></td>
     <% end %>
   </tr>
 <% end %>

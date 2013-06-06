@@ -73,7 +73,7 @@ class Admin::AppointmentsController < ApplicationController
     @appointment.update_info(params)
 
     if @appointment.save
-      EmailsWorker.perform_async(@appointment.id)
+      UpdatesWorker.perform_async(@appointment.id)
       TextsWorker.perform_in(@appointment.text_time.hours, @appointment.id)
       redirect_to admin_appointment_path(@appointment), notice: "Appointment updated!"
     else

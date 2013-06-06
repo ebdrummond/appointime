@@ -15,7 +15,13 @@ $(document).ready(function() {
       var selectedDate = this.get();
       var selectedDuration = $(":radio[name=duration]:checked").val();
       var user_id = $(':input[name="appointment[user_id]"]').val();
-      var apptURL = "/admin/appointments/new?date=" + selectedDate + "&duration=" + selectedDuration + "&user_id=" + user_id;
+
+      var ajax_prefix = "/appointments/new";
+      if (window.location.pathname.indexOf("/admin/appointments") == 0) {
+        ajax_prefix = "/admin/appointments/new";
+      }
+      var apptURL = ajax_prefix + "?date=" + selectedDate + "&duration=" + selectedDuration + "&user_id=" + user_id;
+
       jQuery.getJSON(apptURL, function(open_slots) {
 
         var destination = $("#open-slot-results");
