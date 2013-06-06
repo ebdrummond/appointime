@@ -7,10 +7,10 @@ newleaf2.png: newleaf2-4f2316b29e4448fb216ae0292cfab03f.png
 newleaf2/index.png: newleaf2-4f2316b29e4448fb216ae0292cfab03f.png
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-c20fa3a948ac80a10eab69a5b176f788.js
-application/index.js: application-c20fa3a948ac80a10eab69a5b176f788.js
-application.css: application-e34f5526d7dd41de36fd3ef16b2b2c8a.css
-application/index.css: application-e34f5526d7dd41de36fd3ef16b2b2c8a.css
+application.js: application-193d466adc78eeea15ab5137ad491428.js
+application/index.js: application-193d466adc78eeea15ab5137ad491428.js
+application.css: application-848b71318210f0d49a86ecd8dfaf6b32.css
+application/index.css: application-848b71318210f0d49a86ecd8dfaf6b32.css
 fontawesome-webfont.eot: fontawesome-webfont-635909f146e208b3509acdf3b154bf0d.eot
 fontawesome-webfont/index.eot: fontawesome-webfont-635909f146e208b3509acdf3b154bf0d.eot
 fontawesome-webfont.ttf: fontawesome-webfont-6a4e273908b7e43d9e479d38b8ae5957.ttf
