@@ -20,6 +20,13 @@ class Appointment < ActiveRecord::Base
     appointment
   end
 
+  def update_info(params)
+    self.date = params[:date]
+    self.start = Time.parse(params[:appt_slot].gsub(", ", ":"))
+    self.duration = params[:duration]
+    self
+  end
+
   def pretty_start
     "#{self.date.strftime("%B %-d")} at #{self.start.strftime("%-l:%M")}"
   end

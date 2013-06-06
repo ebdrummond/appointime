@@ -15,12 +15,13 @@ Appointime::Application.routes.draw do
   get 'faq', to: 'extras#faq', as: 'faq'
   get 'location', to: 'extras#location', as: 'location'
 
-
   namespace :admin do
     resource :dashboard, :only => :show
     resources :appointments
       get 'clients', to: 'appointments#clients', as: 'clients'
   end
+
+  resources :appointments
 
   mount Sidekiq::Web, at: '/sidekiq'
 end

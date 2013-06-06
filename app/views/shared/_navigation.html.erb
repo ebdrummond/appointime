@@ -6,7 +6,7 @@
       <li><%= link_to "Services", services_path %></li>
       <li><%= link_to "FAQ", faq_path %></li>
       <li><%= link_to "Location", location_path %></li>
-      <li><a href="#">Book now!</a></li>
+      <li><%= link_to "Book Now!", new_appointment_path %></li>
       <% if current_user && current_user.admin %>
         <li><%= link_to "Dashboard", admin_dashboard_path %></li>
       <% elsif current_user %>
