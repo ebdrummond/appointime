@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Appointime::Application.routes.draw do
   root :to => 'welcome#show'
 
@@ -19,4 +21,6 @@ Appointime::Application.routes.draw do
     resources :appointments
       get 'clients', to: 'appointments#clients', as: 'clients'
   end
+
+  mount Sidekiq::Web, at: '/sidekiq'
 end
