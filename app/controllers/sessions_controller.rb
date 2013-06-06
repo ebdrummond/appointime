@@ -12,10 +12,11 @@ class SessionsController < ApplicationController
         redirect_to admin_dashboard_path,
         notice: "Welcome back, #{user.first_name}!"
       else
-        redirect_to root_path
+        redirect_to root_path, notice: "Welcome back, #{user.first_name}!"
       end
     else
-      redirect_to :back, error: "Login failed"
+      flash[:error] = "Login failed"
+      redirect_to login_path
     end
   end
 
