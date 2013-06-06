@@ -89,3 +89,22 @@ body {
   padding-top: 20px;
   display: none;
 }
+
+#appt_date {
+  cursor: pointer;
+}
+
+.open_slot {
+  float: left;
+  width: 50%;
+  line-height: 150%;
+}
+
+.open_slot input {
+  float: left;
+}
+
+.open_slot .time_slot_time {
+  float: left;
+  padding-left: 10px;
+}

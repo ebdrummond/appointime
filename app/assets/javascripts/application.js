@@ -20,5 +20,4 @@
 //= require handlebars
 //= require appointment
 //= require clients
-//= require legacy
 //= require_tree .

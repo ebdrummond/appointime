@@ -1,5 +1,5 @@
 class TimeSlot
-  attr_reader :starts, :ends, :duration
+  attr_reader :starts, :ends, :duration, :formatted
 
   def initialize(params)
     if params[:starts]
@@ -20,6 +20,8 @@ class TimeSlot
       end
       @duration = ends - starts
     end
+
+    @formatted = @starts.time.strftime("%-l:%M")
   end
 
   def ==(other)
