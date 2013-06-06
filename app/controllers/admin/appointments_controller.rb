@@ -39,7 +39,7 @@ class Admin::AppointmentsController < ApplicationController
     @appointment = Appointment.schedule(params)
 
     if @appointment.save
-      TextsWorker.perform_async(@appointment.id)
+      EmailsWorker.perform_async(@appointment.id)
       #@appointment.send_text_message
       redirect_to admin_appointment_path(@appointment), notice: "Appointment created!"
     else

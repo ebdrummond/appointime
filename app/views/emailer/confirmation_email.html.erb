@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>Hi <%= @appointment.user.first_name %>,</p><br>
+    <p>
+      You have successfully booked a <%= @appointment.duration %> minute massage at New Leaf on <%= @appointment.pretty_start %>.
+    </p>
+    <p>
+      If you need to change your appointment, please do so here.
+    </p>
+    <p>Thanks again, and see you soon!</p>
+    <p>Meghan Peters, LMT</p>
+    <br>
+    <p>New Leaf Massage and Wellness<br>
+       586.604.8834<br>
+       14100 Cedar Road, Suite 100<br>
+       University Heights, OH 44121
+    </p>
+  </body>
+</html>
