@@ -8,23 +8,23 @@ class DayPlanner
   def time_slots
     unless appointments.empty?
       slots = []
-      appointments.each do |appt|
-        slots << TimeSlot.new(starts: appt.start, duration: appt.duration)
-      end
-      unless appointments.count < 2
-        slots.concat(gap_slots)
-      end
-      unless Clock.from(appointments.first.start) == Clock.new(8)
-        slots << morning_slot
-      end
-      unless Clock.from(appointments.last.start + appointments.last.duration * 60).time >= Clock.new(17).time
-        slots << afternoon_slot
-      end
-      slots.reject!{|slot| slot.duration == 0}
+      slots.concat(appointment_slots)
+      slots.concat(gap_slots) unless appointments.count < 2
+      slots << morning_slot unless Clock.from(appointments.first.start) == Clock.new(8)
+      slots << afternoon_slot unless Clock.from(appointments.last.ending).time >= Clock.new(17).time
+
       slots.sort_by{|slot| slot.starts.time}
     else
       [TimeSlot.new(starts: Clock.new(8).time, ends: Clock.new(18).time)]
     end
+  end
+
+  def appointment_slots
+    slots = []
+    appointments.each do |appt|
+        slots << TimeSlot.new(starts: appt.start, duration: appt.duration)
+    end
+    slots
   end
 
   def morning_slot
@@ -32,7 +32,7 @@ class DayPlanner
   end
 
   def afternoon_slot
-    TimeSlot.new(starts: appointments.last.start + (appointments.last.duration).minutes)
+    TimeSlot.new(starts: appointments.last.ending)
   end
 
   def gap_slots
@@ -40,7 +40,9 @@ class DayPlanner
     appointments.each_with_index do |appt, index|
       break if index == appointments.size - 1
       next_appt = appointments[index+1]
-      slots << TimeSlot.new(starts: appt.start + appt.duration.minutes, ends: next_appt.start)
+      if appt.ending != next_appt.start
+        slots << TimeSlot.new(starts: appt.start + appt.duration * 60, ends: next_appt.start)
+      end
     end
     slots
   end
@@ -67,13 +69,19 @@ class DayPlanner
       else
         iterations = (os.duration / 30 - 2).to_i
       end
-      start = os.starts
-      iterations.times do
-        slots << TimeSlot.new(starts: start.time + 30, ends: os.ends.time)
-        start += 30
-      end
+      slots << create_appt_intervals(os, iterations)
     end
-    slots.flatten.uniq.sort_by{|s| s.starts.time }
+    slots.flatten.sort_by{|s| s.starts.time }
+  end
+
+  def create_appt_intervals(slot, iterations)
+    slots = []
+    start = slot.starts
+    iterations.times do
+      slots << TimeSlot.new(starts: start.time + 30, ends: slot.ends.time)
+      start += 30
+    end
+    slots
   end
 end
 
