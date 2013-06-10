@@ -39,7 +39,7 @@ class Appointment < ActiveRecord::Base
     Appointment.where(:date => (Date.today.beginning_of_week(start_day = :sunday) + 7.days..Date.today.end_of_week(start_day = :sunday) + 7.days)).order("date ASC, start ASC")
   end
 
-  def end
+  def ending
     (Clock.from(self.start) + self.duration).time
   end
 
