@@ -2,25 +2,14 @@
 
 New Leaf Massage is my sister's massage business, and this repo is the site I'm building for her.  My first iteration of her site is all about booking appointments online, and text message reminders to ensure her clients don't forget about their upcoming appointment.
 
-The production site can be found at <a href="http://newleafmassage.net">newleafmassage.net</a>.
+The production site can be found at newleafmassage.net.
 
 Look for new features coming soon, including:
-<ul>
-  <li>
-    Online payments
-  </li>
-  <li>
-    More options for appointment durations
-  </li>
-  <li>
-    Want to make sure my sister knows about a problem area or a concern of yours before your appointment?  Leave a note to let her know!  Thought of something after the appointment?  Leave feedback!
-  </li>
-  <li>
-    Revamped site design
-  </li>
-  <li>
-    More robust admin dashboard
-  </li>
-</ul>
+
+  Online payments
+  More options for appointment durations
+  Want to make sure my sister knows about a problem area or a concern of yours before your appointment?  Leave a note to let her know!  Thought of something after the appointment?  Leave feedback!
+  Revamped site design
+  More robust admin dashboard
 
 Have ideas for how to make this site even better?  Please contact me and let me know!

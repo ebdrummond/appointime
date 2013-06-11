@@ -15,7 +15,7 @@ class Emailer < ActionMailer::Base
 
   def meghan_confirmation_email(appointment)
     @appointment = appointment
-    mail( to: "e.b.drummond@gmail.com",
+    mail( to: "newleafmassageandwellness@gmail.com",
           subject: "Fake appointment scheduled!")
   end
 end
