@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p>
+      Hi Meghan, it's Erin.
+    </p>
+    <p>
+      Just letting you know <%= @appointment.user.full_name %> has booked a fake appointment online.  If this looks like a real client, you might want to let them know they need to book a real appointment.  They tried to book a <%= @appointment.duration %> minute massage on <%= @appointment.pretty_start %>.  You can contact them at:
+      <ul>
+        <li><%= @appointment.user.phone %> or</li>
+        <li><%= @appointment.user.email %></li>
+      </ul>
+    </p>
+    <p>
+      Hugs,<br>
+      Erin
+    </p>
+  </body>
+</html>

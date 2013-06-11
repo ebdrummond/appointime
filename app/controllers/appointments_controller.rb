@@ -24,6 +24,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.schedule(params)
 
     if @appointment.save
+      MeghanEmailsWorker.perform_async(@appointment.id)
       EmailsWorker.perform_async(@appointment.id)
       TextsWorker.perform_in(@appointment.text_time.hours, @appointment.id)
       redirect_to appointment_path(@appointment), notice: "Appointment created!"
