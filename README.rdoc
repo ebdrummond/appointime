@@ -6,10 +6,10 @@ The production site can be found at http://newleafmassage.net.
 
 Look for new features coming soon, including:
 
-Online payments
-More options for appointment durations
-Want to make sure my sister knows about a problem area or a concern of yours before your appointment?  Leave a note to let her know!  Thought of something after the appointment?  Leave feedback!
-Revamped site design
-More robust admin dashboard
+* Online payments
+* More options for appointment durations
+* Want to make sure my sister knows about a problem area or a concern of yours before your appointment?  Leave a note to let her know!  Thought of something after the appointment?  Leave feedback!
+* Revamped site design
+* More robust admin dashboard
 
 Have ideas for how to make this site even better?  Please contact me and let me know!
