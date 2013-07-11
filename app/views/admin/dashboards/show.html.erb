@@ -16,7 +16,7 @@
           <tr>
             <td><%= formatted(appt.date) %></td>
             <td><%= formatted(appt.start) %></td>
-            <td><%= formatted(appt.end) %></td>
+            <td><%= formatted(appt.ending) %></td>
             <td><%= appt.user.full_name %></td>
             <td><%= link_to "Manage", admin_appointment_path(appt) %></td>
           </tr>

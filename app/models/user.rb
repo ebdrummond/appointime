@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                   :password_confirmation,
                   :phone
 
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, message: ": This email is already registered."
 
   validates_presence_of :first_name,
                         :last_name,
