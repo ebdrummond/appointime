@@ -35,4 +35,13 @@ describe "when a user logs into the site" do
       expect(page).to have_content("Login failed")
     end
   end
+
+  context "as a regular user trying to access the admin page" do
+    it "redirects the user with an error" do
+      click_button("Log in")
+      visit admin_dashboard_path
+      expect(page).to have_content("Not authorized")
+      expect(current_path).to eq(root_path)
+    end
+  end
 end

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to user_path(@user), notice: "Profile updated."
     else
-      redirect to edit_user_path(@user), notice: "Update failed"
+      redirect_to edit_user_path(@user), notice: "Update failed"
     end
   end
 
