@@ -13,7 +13,7 @@ describe "when a user signs up with the site" do
       click_button("Sign up!")
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Welcome, Nic!")
-      expect(User.count).to eq(1)
+      expect(User.last.email).to eq("nic@gmail.com")
     end
   end
 

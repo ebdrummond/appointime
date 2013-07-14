@@ -23,6 +23,8 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'pry'
   gem 'better_errors'
