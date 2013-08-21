@@ -1,6 +1,6 @@
 var updateClientView = function (searchTerm) {
 
-  var clientsURL = "/admin/clients?query=" + searchTerm;
+  var clientsURL = "/clients?query=" + searchTerm;
 
   jQuery.getJSON(clientsURL, function(clients) {
 

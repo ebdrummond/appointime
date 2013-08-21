@@ -1,5 +1,24 @@
 class AppointmentsController < ApplicationController
-  before_filter :authorize_access, except: [:new, :create]
+  before_filter :authorize_access, except: [:clients, :new, :create]
+  before_filter :require_admin, only: :clients
+
+  def clients
+    @users = User.search_by_full_name_or_email(params[:query])
+
+    respond_to do |format|
+      format.html
+
+      format.json do
+        @users = @users.map do |user|
+          { full_name: user.full_name,
+            email: user.email,
+            appointment_path: new_appointment_path(user_id: user.id) }
+        end
+
+        render json: @users
+      end
+    end
+  end
 
   def new
     if current_user
@@ -75,6 +94,7 @@ class AppointmentsController < ApplicationController
     notice: "Appointment cancelled"
   end
 
+private
   def authorize_access
     appointment = Appointment.find(params[:id])
     if current_user == nil || (appointment.user != current_user unless current_user.admin)
