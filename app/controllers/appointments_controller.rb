@@ -23,6 +23,11 @@ class AppointmentsController < ApplicationController
   def new
     if current_user
       @appointment = Appointment.new
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+      else
+        @user = current_user
+      end
 
       respond_to do |format|
         format.html
