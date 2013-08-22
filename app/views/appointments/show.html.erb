@@ -10,10 +10,10 @@
     <th></th>
   </tr>
   <tr>
-    <td><%= formatted(@appointment.date) %></td>
-    <td><%= formatted(@appointment.start) %></td>
-    <td><%= formatted(@appointment.ending) %></td>
-    <% if @appointment.date > Date.today %>
+    <td><%= formatted_date(@appointment.start_time) %></td>
+    <td><%= formatted_time(@appointment.start_time) %></td>
+    <td><%= formatted_time(@appointment.ending) %></td>
+    <% if @appointment.start_time.to_date > Date.today %>
     <td><%= link_to "Edit", edit_appointment_path(@appointment) %></td>
     <td><%= link_to "Cancel", appointment_path(@appointment), method: :delete, :confirm => "Are you sure you want to delete this appointment?" %>
     <% else %>

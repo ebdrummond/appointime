@@ -22,7 +22,7 @@ class DayPlanner
   def appointment_slots
     slots = []
     appointments.each do |appt|
-        slots << TimeSlot.new(starts: appt.start, duration: appt.duration)
+        slots << TimeSlot.new(starts: appt.start_time.strftime("%I:%M"), duration: appt.duration)
     end
     slots
   end

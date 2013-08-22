@@ -3,7 +3,7 @@ class TimeSlot
 
   def initialize(params)
     if params[:starts]
-      @starts = Clock.from(params[:starts])
+      @starts = Clock.starts_from(params[:starts])
     else
       @starts = Clock.new(8)
     end

@@ -3,6 +3,11 @@ class Clock
     Clock.new(time.hour, time.min)
   end
 
+  def self.starts_from(time)
+    time = time.split(":")
+    Clock.new(time.first, time.last)
+  end
+
   attr_reader :time, :hour, :minutes
 
   def initialize(hour, minutes = 0)

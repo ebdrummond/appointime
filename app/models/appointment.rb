@@ -1,11 +1,9 @@
 class Appointment < ActiveRecord::Base
-  attr_accessible :date,
-                  :start,
+  attr_accessible :start_time,
                   :duration,
                   :user_id
 
-  validates_presence_of :date,
-                        :start,
+  validates_presence_of :start_time,
                         :duration,
                         :user_id
 
@@ -13,8 +11,7 @@ class Appointment < ActiveRecord::Base
 
   def self.schedule(params)
     appointment = Appointment.new
-    appointment.date = params[:date]
-    appointment.start = Time.parse(params[:appt_slot].gsub(", ", ":"))
+    appointment.start_time = DateTimeParser.new(params[:date], params[:appt_slot]).parse
     appointment.duration = params[:duration]
     appointment.user_id = params[:appointment][:user_id]
     appointment
@@ -40,15 +37,28 @@ class Appointment < ActiveRecord::Base
   end
 
   def ending
-    (Clock.from(self.start) + self.duration).time
+    (Clock.from(self.start_time) + self.duration).time
+  end
+
+  def self.find_all_by_date(date)
+    dates = Appointment.pluck(:start_time)
+    dates.select{|appt_date| appt_date.to_date == date }
   end
 
   def self.for_this(date)
     Appointment.find_all_by_date(date)
   end
 
+  def self.time_for_appointment_reminder?
+    Appointment.where(["appointment_time < ?", (Time.now - 4.hours)])
+  end
+
+  def self.text_upcoming_appointments
+
+  end
+
   def appointment_time
-    (self.date.to_time + self.start.hour * 60 * 60)
+    self.start_time
   end
 
   def hours_before_appointment

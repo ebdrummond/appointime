@@ -11,16 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605184739) do
+ActiveRecord::Schema.define(:version => 20130822184409) do
 
   create_table "appointments", :force => true do |t|
-    t.date     "date"
     t.boolean  "blocked",    :default => false
     t.integer  "user_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.integer  "duration"
-    t.time     "start"
+    t.datetime "start_time"
   end
 
   add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"

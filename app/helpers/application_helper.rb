@@ -6,4 +6,12 @@ module ApplicationHelper
       input.strftime("%-l:%M")
     end
   end
+
+  def formatted_date(datetime)
+
+  end
+
+  def formatted_time(datetime)
+
+  end
 end

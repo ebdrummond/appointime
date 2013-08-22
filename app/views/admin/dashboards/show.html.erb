@@ -14,8 +14,8 @@
         </tr>
         <% @weekly_appointments.each do |appt| %>
           <tr>
-            <td><%= formatted(appt.date) %></td>
-            <td><%= formatted(appt.start) %></td>
+            <td><%= formatted(appt.start_time) %></td>
+            <td><%= formatted(appt.start_time) %></td>
             <td><%= formatted(appt.ending) %></td>
             <td><%= appt.user.full_name %></td>
             <td><%= link_to "Manage", appointment_path(appt) %></td>
