@@ -1,5 +1,5 @@
 describe TimeSlot do
-  let(:appt){ stub(start_time: Time.new(2013, 1, 1, 15), duration: 90) }
+  let(:appt){ stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90) }
 
   context "an appointment time slot" do
     let(:time_slot){ TimeSlot.new(starts: appt.start_time, duration: appt.duration) }
@@ -26,7 +26,7 @@ describe TimeSlot do
   end
 
   context "an empty slot at the end of the day" do
-    let(:start_time){ Time.new(2013, 1, 1, 16, 30) }
+    let(:start_time){ DateTime.new(2013, 1, 1, 16, 30) }
     let(:time_slot){ TimeSlot.new(starts: start_time) }
 
     it "starts at 4:30pm" do

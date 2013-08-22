@@ -4,8 +4,8 @@ class Clock
   end
 
   def self.starts_from(time)
-    time = time.split(":")
-    Clock.new(time.first, time.last)
+    t = time.strftime("%H:%M").split(":")
+    Clock.new(t.first.to_i, t.last.to_i)
   end
 
   attr_reader :time, :hour, :minutes
