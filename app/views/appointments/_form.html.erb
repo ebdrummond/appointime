@@ -1,7 +1,7 @@
 <div class="appt-wrapper">
 
   <%= form_for @appointment do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
 
     <h4>First, select a service</h4>
     <%= radio_button_tag :duration, 60 %> &nbsp;60 minute massage&nbsp;

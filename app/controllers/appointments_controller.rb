@@ -46,6 +46,11 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.schedule(params)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    else
+      @user = current_user
+    end
 
     if @appointment.save
       MeghanEmailsWorker.perform_async(@appointment.id)

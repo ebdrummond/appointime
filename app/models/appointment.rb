@@ -48,7 +48,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def appointment_time
-    self.date.to_time + self.start.hour * 60 * 60
+    (self.date.to_time + self.start.hour * 60 * 60)
   end
 
   def hours_before_appointment
@@ -60,6 +60,6 @@ class Appointment < ActiveRecord::Base
   end
 
   def text_time
-    hours_before_appointment + 3
+    hours_before_appointment - 4
   end
 end
