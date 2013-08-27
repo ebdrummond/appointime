@@ -1,14 +1,16 @@
+require 'spec_helper'
+
 describe DayPlanner do
   it "sorts the appointments by start time" do
-    appt1 = stub(start: Clock.new(15).time.to_datetime, duration: 90)
-    appt2 = stub(start: Clock.new(8).time.to_datetime, duration: 90)
+    appt1 = stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90)
+    appt2 = stub(start_time: DateTime.new(2013, 1, 1, 8), duration: 90)
     appts = [appt1, appt2]
 
     expect(DayPlanner.new(appts).appointments).to eq([appt2, appt1])
   end
 
   context "with a single appointment in the middle of the day" do
-    let(:appt1){ stub(start: Clock.new(10, 30).time, duration: 90, ending: Clock.new(12).time) }
+    let(:appt1){ stub(start_time: DateTime.new(2013, 1, 1, 10, 30), duration: 90, ending: DateTime.new(2013, 1, 1, 12)) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -17,7 +19,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq(Clock.new(10, 30).time)
+      expect(day_planner.appointments.first.start_time).to eq(DateTime.new(2013, 1, 1, 10, 30))
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -47,7 +49,7 @@ describe DayPlanner do
   end
 
   context "with a single appointment at the beginning of the day" do
-    let(:appt1){ stub(start: Clock.new(8).time.to_datetime, duration: 90, ending: Clock.new(9, 30).time) }
+    let(:appt1){ stub(start_time: DateTime.new(2013, 1, 1, 8), duration: 90, ending: DateTime.new(2013, 1, 1, 9, 30)) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -56,7 +58,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq(Clock.new(8).time.to_datetime)
+      expect(day_planner.appointments.first.start_time).to eq(DateTime.new(2013, 1, 1, 8))
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -94,7 +96,7 @@ describe DayPlanner do
   end
 
   context "with a single appointment at the end of the day" do
-    let(:appt1){ stub(start: Clock.new(16, 30).time, duration: 90, ending: Clock.new(18).time) }
+    let(:appt1){ stub(start_time: DateTime.new(2013, 1, 1, 16, 30), duration: 90, ending: DateTime.new(2013, 1, 1, 18)) }
     let(:appts){ [appt1] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -103,7 +105,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq(Clock.new(16, 30).time)
+      expect(day_planner.appointments.first.start_time).to eq(DateTime.new(2013, 1, 1, 16, 30))
       expect(day_planner.appointments.first.duration).to eq(90)
     end
 
@@ -141,9 +143,9 @@ describe DayPlanner do
   end
 
   context "with three appointments, with gaps in between" do
-    let(:appt1){ stub(start: Clock.new(11, 30).time, duration: 90, ending: Clock.new(13).time) }
-    let(:appt2){ stub(start: Clock.new(10).time, duration: 60, ending: Clock.new(11).time) }
-    let(:appt3){ stub(start: Clock.new(15).time, duration: 90, ending: Clock.new(16, 30).time) }
+    let(:appt1){ stub(start_time: DateTime.new(2013, 1, 1, 11, 30), duration: 90, ending: DateTime.new(2013, 1, 1, 1)) }
+    let(:appt2){ stub(start_time: DateTime.new(2013, 1, 1, 10), duration: 60, ending: DateTime.new(2013, 1, 1, 11)) }
+    let(:appt3){ stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90, ending: DateTime.new(2013, 1, 1, 16, 30)) }
     let(:appts){ [appt2, appt1, appt3] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -152,7 +154,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq(Clock.new(10).time)
+      expect(day_planner.appointments.first.start_time).to eq(DateTime.new(2013, 1, 1, 10))
       expect(day_planner.appointments.first.duration).to eq(60)
     end
 
@@ -190,9 +192,9 @@ describe DayPlanner do
   end
 
   context "with three appointments, two back to back" do
-    let(:appt1){ stub(start: Clock.new(11).time, duration: 90, ending: Clock.new(12, 30).time) }
-    let(:appt2){ stub(start: Clock.new(10).time, duration: 60, ending: Clock.new(11).time) }
-    let(:appt3){ stub(start: Clock.new(15).time, duration: 90, ending: Clock.new(16, 30).time) }
+    let(:appt1){ stub(start_time: DateTime.new(2013, 1, 1, 11), duration: 90, ending: DateTime.new(2013, 1, 1, 12, 30)) }
+    let(:appt2){ stub(start_time: DateTime.new(2013, 1, 1, 10), duration: 60, ending: DateTime.new(2013, 1, 1, 11)) }
+    let(:appt3){ stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90, ending: DateTime.new(2013, 1, 1, 16, 30)) }
     let(:appts){ [appt2, appt1, appt3] }
     let(:day_planner){ DayPlanner.new(appts) }
 
@@ -201,7 +203,7 @@ describe DayPlanner do
     end
 
     it "knows the start time and duration of the appointments" do
-      expect(day_planner.appointments.first.start).to eq(Clock.new(10).time)
+      expect(day_planner.appointments.first.start_time).to eq(DateTime.new(2013, 1, 1, 10))
       expect(day_planner.appointments.first.duration).to eq(60)
     end
 

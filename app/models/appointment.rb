@@ -9,6 +9,10 @@ class Appointment < ActiveRecord::Base
 
   belongs_to :user
 
+  def ending
+    self.start_time.to_time + self.duration.minutes
+  end
+
   def self.schedule(params)
     appointment = Appointment.new
     appointment.start_time = DateTimeParser.new(params[:date], params[:appt_slot]).parse

@@ -2,7 +2,7 @@ class DayPlanner
   attr_reader :appointments
 
   def initialize(appointments = [])
-    @appointments = appointments.sort_by{|appt| appt.start}
+    @appointments = appointments.sort_by{|appt| appt.start_time}
   end
 
   def time_slots
@@ -10,7 +10,7 @@ class DayPlanner
       slots = []
       slots.concat(appointment_slots)
       slots.concat(gap_slots) unless appointments.count < 2
-      slots << morning_slot unless Clock.from(appointments.first.start) == Clock.new(8)
+      slots << morning_slot unless Clock.from(appointments.first.start_time) == Clock.new(8)
       slots << afternoon_slot unless Clock.from(appointments.last.ending).time >= Clock.new(17).time
 
       slots.sort_by{|slot| slot.starts.time}
@@ -28,7 +28,7 @@ class DayPlanner
   end
 
   def morning_slot
-    TimeSlot.new(ends: appointments.first.start)
+    TimeSlot.new(ends: appointments.first.start_time)
   end
 
   def afternoon_slot
@@ -40,8 +40,8 @@ class DayPlanner
     appointments.each_with_index do |appt, index|
       break if index == appointments.size - 1
       next_appt = appointments[index+1]
-      if appt.ending != next_appt.start
-        slots << TimeSlot.new(starts: appt.start + appt.duration * 60, ends: next_appt.start)
+      if appt.ending != next_appt.start_time
+        slots << TimeSlot.new(starts: appt.start_time + appt.duration.minutes, ends: next_appt.start_time)
       end
     end
     slots
@@ -49,7 +49,7 @@ class DayPlanner
 
   def appointment_start_times
     appointments.collect do |appt|
-      Clock.from(appt.start).to_s
+      Clock.from(appt.start_time.to_time).to_s
     end
   end
 
