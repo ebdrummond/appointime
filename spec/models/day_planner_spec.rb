@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe DayPlanner do
   it "sorts the appointments by start time" do
     appt1 = stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90)
