@@ -13,7 +13,7 @@ describe "when a user logs into the site" do
   end
 
   context "as an admin with valid login credentials" do
-    it "logs the admin in" do
+    xit "logs the admin in" do
       @user.admin = true
       @user.save
       click_button("Log in")
@@ -22,14 +22,14 @@ describe "when a user logs into the site" do
   end
 
   context "as a regular user with valid login credentials" do
-    it "logs the user in" do
+    xit "logs the user in" do
       click_button("Log in")
       expect(current_path).to eq(root_path)
     end
   end
 
   context "as a user with invalid login credentials" do
-    it "re-renders the login form" do
+    xit "re-renders the login form" do
       fill_in("Email", with: "hooey!")
       click_button("Log in")
       expect(page).to have_content("Login failed")
@@ -37,7 +37,7 @@ describe "when a user logs into the site" do
   end
 
   context "as a regular user trying to access the admin page" do
-    it "redirects the user with an error" do
+    xit "redirects the user with an error" do
       click_button("Log in")
       visit admin_dashboard_path
       expect(page).to have_content("Not authorized")

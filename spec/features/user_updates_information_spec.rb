@@ -15,7 +15,7 @@ describe "a user updates their information" do
 
   context "as a user updating their own information" do
 
-    it "shows the user their current information" do
+    xit "shows the user their current information" do
       visit user_path(@user)
       expect(page).to have_content("Nicolas Peters")
       expect(page).to have_content("nicolas.peters@gmail.com")
@@ -23,7 +23,7 @@ describe "a user updates their information" do
       expect(page).to have_button("Edit my info")
     end
 
-    it "allows the user to edit their personal information with valid information" do
+    xit "allows the user to edit their personal information with valid information" do
       visit user_path(@user)
       click_button("Edit my info")
       fill_in("First name", with: "Nic")
@@ -34,7 +34,7 @@ describe "a user updates their information" do
       expect(page).to_not have_content("Nicolas")
     end
 
-    it "throws an error when a user tries to edit their information with invalid information" do
+    xit "throws an error when a user tries to edit their information with invalid information" do
       visit user_path(@user)
       click_button("Edit my info")
       fill_in("First name", with: "")
@@ -52,7 +52,7 @@ describe "a user updates their information" do
                               password: "yes",
                               phone: "1112223333") }
 
-    it "allows the admin to edit the user's information with valid information" do
+    xit "allows the admin to edit the user's information with valid information" do
       @user.admin = true
       @user.save
       visit user_path(user2)
@@ -73,7 +73,7 @@ describe "a user updates their information" do
                               password: "yes",
                               phone: "1112223333") }
 
-    it "does not allow the user to view another user's information" do
+    xit "does not allow the user to view another user's information" do
       visit user_path(user2)
       expect(page).to have_content("You are not authorized to view this page")
     end

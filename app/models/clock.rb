@@ -1,5 +1,6 @@
 class Clock
   def self.from(time)
+
     Clock.new(time.hour, time.min)
   end
 
@@ -8,12 +9,20 @@ class Clock
     Clock.new(t.first.to_i, t.last.to_i)
   end
 
-  attr_reader :time, :hour, :minutes
+  attr_accessor :time, :hour, :minutes
 
   def initialize(hour, minutes = 0)
-    @time = Time.new(1970, 1, 1, hour, minutes)
     @hour = hour
     @minutes = minutes
+    @time = Time.new(1970, 1, 1, hour, minutes)
+    clean_input if hour.is_a?(String)
+  end
+
+  def clean_input
+    split_time = hour.split(", ")
+    self.hour = split_time.first.to_i
+    self.minutes = split_time.last.to_i
+    self.time = Time.new(1970, 1, 1, hour, minutes)
   end
 
   def to_s

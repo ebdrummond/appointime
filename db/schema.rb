@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822184409) do
+ActiveRecord::Schema.define(:version => 20131028042521) do
 
   create_table "appointments", :force => true do |t|
     t.boolean  "blocked",    :default => false
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(:version => 20130822184409) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.integer  "duration"
-    t.datetime "start_time"
+    t.time     "start_time"
+    t.date     "date"
   end
 
   add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"
