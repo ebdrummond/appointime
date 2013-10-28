@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe Clock do
   it "can take in just an hour" do
     expect(Clock.new(15).to_s).to eq("15:00")
@@ -5,6 +7,10 @@ describe Clock do
 
   it "can take in an hour and minutes" do
     expect(Clock.new(15, 30).to_s).to eq("15:30")
+  end
+
+  it "can take in an hour and minutes as a string" do
+    expect(Clock.new("15, 30").to_s).to eq("15:30")
   end
 
   it "can add minutes to a clock" do
