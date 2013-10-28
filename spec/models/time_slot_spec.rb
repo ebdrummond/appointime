@@ -1,11 +1,14 @@
+require 'spec_helper'
+
 describe TimeSlot do
-  let(:appt){ stub(start_time: DateTime.new(2013, 1, 1, 15), duration: 90) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:appt){ FactoryGirl.create(:appointment, user_id: user.id) }
 
   context "an appointment time slot" do
     let(:time_slot){ TimeSlot.new(starts: appt.start_time, duration: appt.duration) }
 
     it "has an end time" do
-      expect(time_slot.ends).to eq(Clock.new(16, 30))
+      expect(time_slot.ends).to eq(Clock.new(11))
     end
   end
 
@@ -16,17 +19,17 @@ describe TimeSlot do
       expect(time_slot.starts).to eq(Clock.new(8))
     end
 
-    it "ends at 3pm" do
-      expect(time_slot.ends).to eq(Clock.new(15))
+    it "ends at 9:30am" do
+      expect(time_slot.ends).to eq(Clock.new(9, 30))
     end
 
-    it "lasts for 420 minutes" do
-      expect(time_slot.duration).to eq(420)
+    it "lasts for 90 minutes" do
+      expect(time_slot.duration).to eq(90)
     end
   end
 
   context "an empty slot at the end of the day" do
-    let(:start_time){ DateTime.new(2013, 1, 1, 16, 30) }
+    let(:start_time){ Clock.new(16, 30).time }
     let(:time_slot){ TimeSlot.new(starts: start_time) }
 
     it "starts at 4:30pm" do
