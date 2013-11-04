@@ -12,6 +12,7 @@ gem 'sidekiq'
 gem 'unicorn'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'chronic'
 
 group :assets do
   gem 'twitter-bootstrap-rails'
